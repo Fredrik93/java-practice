@@ -39,5 +39,15 @@ public class LongestCommonPrefixTest
         String result = longestCommonPrefix.longestCommonPrefix(new String[] {});
         assertThat(result).isEqualTo("");
     }
+    @Test
+    void testEmptyStrings() {
+        String result = longestCommonPrefix.longestCommonPrefix(new String[] {"","", ""});
+        assertThat(result).isEqualTo("");
+    }
+    @Test
+    void testOk2() {
+        String result = longestCommonPrefix.longestCommonPrefix(new String[] {"cir","car"});
+        assertThat(result).isEqualTo("c");
+    }
 
 }
