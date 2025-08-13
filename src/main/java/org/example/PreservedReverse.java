@@ -8,37 +8,30 @@ public class PreservedReverse
 
     public String reverse(String input)
     {
-        // split up in chars
-        char[] arr = input.toCharArray();
         Stack<Character> stack = new Stack<>();
-        char[] result = new char[arr.length];
-        int j= 0;
-        for(int i = 0; i < arr.length; i++)
+        char[] charArr = input.toCharArray();
+        StringBuilder result = new StringBuilder();
+        for(char c : charArr)
         {
-            // if we encounter a space, or if we reach the end of the array,
-            // empty stack into results
-            //stopped here. something wrong with last if
-            if(arr[i] == ' ' || arr[i] == ',' || i == arr.length-1){
-
-                while(!stack.isEmpty()){
-                    result[j] = stack.pop();
-                    j++;
+            if(Character.isLetterOrDigit(c))
+            {
+                stack.push(c);
+            }
+            else if(c == ' ' || !Character.isLetterOrDigit(c))
+            {
+                while(!stack.isEmpty())
+                {
+                    result.append(stack.pop());
                 }
-                // add the non-alfa char
-                result[j] = arr[i];
-                j++;
-
-            } else {
-            stack.push(arr[i]);
+                result.append(c);
+            }
 
         }
+        while(!stack.isEmpty())
+        {
+            result.append(stack.pop());
         }
-
-        StringBuilder sb = new StringBuilder();
-        for(char c : result){
-            sb.append(c);
-        }
-        return sb.toString();
+        return result.toString();
     }
 
 }

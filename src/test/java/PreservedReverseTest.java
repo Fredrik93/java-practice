@@ -23,6 +23,11 @@ public class PreservedReverseTest
         String r = t1.reverse("Hello   world");
         assertThat(r).isEqualTo("olleH   dlrow");
     }
+    @Test
+    public void testMultipleSpaces2() {
+        String r = t1.reverse("He   wo");
+        assertThat(r).isEqualTo("eH   ow");
+    }
 
     @Test
     public void testPunctuationInsideSentence() {

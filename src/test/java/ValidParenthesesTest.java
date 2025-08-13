@@ -1,12 +1,12 @@
-import org.example.ValidParentheses;
+import org.example.ValidParentheses2;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ValidParenthesesTest
 {
-    ValidParentheses vp = new ValidParentheses();
+    ValidParentheses2 vp = new ValidParentheses2();
     @Test
     void testOk(){
         boolean result = vp.isValid("()");
@@ -21,5 +21,10 @@ public class ValidParenthesesTest
     void testOk2(){
         boolean result = vp.isValid("({}[])");
         assertTrue(result);
+    }
+     @Test
+    void testOk3(){
+        boolean result = vp.isValid("]");
+        assertFalse(result);
     }
 }
