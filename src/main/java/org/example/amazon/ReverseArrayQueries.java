@@ -10,17 +10,13 @@ import java.util.List;
 public class ReverseArrayQueries
 {
     public static List<Integer> performOperations(List<Integer> arr, List<List<Integer>> operations) {
-        int startIndex;
-        int endIndex;
-        for(int i = 0; i<operations.size(); i++)
-        {
-            List<Integer> sub;
-            startIndex = operations.get(i).get(0);
-            endIndex = operations.get(i).get(1)+1;
-
-            sub = arr.subList(startIndex, endIndex);
-            Collections.reverse(sub);
+        // Write your code here
+        for(int i=0; i<operations.size(); i++){
+            int start = operations.get(i).get(0);
+            int end = operations.get(i).get(1)+1;
+            Collections.reverse(arr.subList(start,end));
         }
-    return arr;
+
+        return arr;
     }
 }
