@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.Arrays;
+
 public class MinimumOperations
 {
     public int minimumOperations(int[] nums)
@@ -15,4 +17,15 @@ public class MinimumOperations
         }
         return countOperations;
     }
+
+    /**
+     * This is pretty neat and works just as well as the method above
+     */
+    public int minimumOperationsStream(int[] nums)
+    {
+        return (int) Arrays.stream(nums)
+                .filter(num -> (num + 1) % 3 == 0 || (num - 1) % 3 == 0)
+                .count();
+    }
+
 }
