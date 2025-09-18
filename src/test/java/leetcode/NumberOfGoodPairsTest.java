@@ -1,4 +1,6 @@
-import org.example.NumberOfGoodPairs;
+package leetcode;
+
+import org.example.leetcode.NumberOfGoodPairs;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

@@ -1,4 +1,6 @@
-import org.example.WealthiestCustomer;
+package leetcode;
+
+import org.example.leetcode.WealthiestCustomer;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

@@ -1,4 +1,6 @@
-import org.example.ValidParentheses2;
+package leetcode;
+
+import org.example.leetcode.ValidParentheses2;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;

@@ -1,4 +1,4 @@
-package org.example;
+package org.example.leetcode;
 
 /**
  * You are given an integer array order of length n and an integer array friends.

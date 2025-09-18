@@ -1,6 +1,5 @@
-package org.example;
+package org.example.leetcode;
 
-import java.util.Arrays;
 import java.util.Stack;
 
 public class PreservedReverse

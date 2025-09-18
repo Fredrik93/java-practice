@@ -1,4 +1,6 @@
-import org.example.FinishingOrder;
+package leetcode;
+
+import org.example.leetcode.FinishingOrder;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

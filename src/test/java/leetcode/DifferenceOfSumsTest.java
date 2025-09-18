@@ -1,4 +1,6 @@
-import org.example.DifferenceOfSums;
+package leetcode;
+
+import org.example.leetcode.DifferenceOfSums;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;

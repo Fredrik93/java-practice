@@ -1,6 +1,4 @@
-package org.example;
-
-import java.util.Stack;
+package org.example.leetcode;
 
 public class ValidParentheses
 {

@@ -1,4 +1,6 @@
-import org.example.RomanNumerals;
+package leetcode;
+
+import org.example.leetcode.RomanNumerals;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;

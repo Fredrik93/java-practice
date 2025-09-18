@@ -1,4 +1,6 @@
-import org.example.LongestCommonPrefix;
+package leetcode;
+
+import org.example.leetcode.LongestCommonPrefix;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;

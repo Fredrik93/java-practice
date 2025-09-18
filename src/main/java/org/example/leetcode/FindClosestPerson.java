@@ -1,4 +1,4 @@
-package org.example;
+package org.example.leetcode;
 
 /**
  * You are given three integers x, y, and z, representing the positions of three people on a number line:

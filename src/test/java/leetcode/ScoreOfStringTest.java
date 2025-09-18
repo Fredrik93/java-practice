@@ -1,4 +1,6 @@
-import org.example.ScoreOfString;
+package leetcode;
+
+import org.example.leetcode.ScoreOfString;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
