@@ -23,11 +23,26 @@ public class PalindromeTest
     @Test
     void testOk2(){
         boolean result = p.isPalindrome(10);
-        assertThat(result).isEqualTo(true);
+        assertThat(result).isEqualTo(false);
     }
     @Test
     void testOk3(){
         boolean result = p.isPalindrome(1001);
+        assertThat(result).isEqualTo(true);
+    }
+    @Test
+    void testOk4(){
+        boolean result = p.isPalindrome(123);
+        assertThat(result).isEqualTo(false);
+    }
+    @Test
+    void testOk5(){
+        boolean result = p.isPalindrome(1221);
+        assertThat(result).isEqualTo(true);
+    }
+    @Test
+    void testOk6(){
+        boolean result = p.isPalindrome(1234554321);
         assertThat(result).isEqualTo(true);
     }
 }
