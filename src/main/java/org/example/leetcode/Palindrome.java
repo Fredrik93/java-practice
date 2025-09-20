@@ -78,17 +78,18 @@ public class Palindrome
         return res;
     }
 
+    // this method is bad. fix it so it works for all number lengths e.g., 10, 100, 1000, 1000000000, 1 etc.
+    // now it only works for four cases 1, 10, 100 and 1000's.
     public int convertArrayToInt(int[] nums)
     {
         int tmp = 0;
-        // if three digits (nums.length == 3), we know that its hundreds so nums[0] * 100
-        // if two (nums.l==2) its nums[0]*2
         int length = nums.length;
-        int firstDigit = 0;
-        int secondDigit = 0;
-        int thirdDigit = 0;
-        int fourthDigit = 0;
-        int fifthDigit = 0;
+        int firstDigit;
+        int secondDigit;
+        int thirdDigit;
+        int fourthDigit;
+
+
         switch(length)
         {
             case 1:

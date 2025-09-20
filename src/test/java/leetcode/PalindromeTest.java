@@ -45,4 +45,10 @@ public class PalindromeTest
         boolean result = p.isPalindrome(1234554321);
         assertThat(result).isEqualTo(true);
     }
+    // this test passes but its incorrect. it results to 0 and compares 12345 == 0 which is false indeed, but it should compute 12345 == 54321.
+    @Test
+    void testOk7(){
+        boolean result = p.isPalindrome(12345);
+        assertThat(result).isEqualTo(false);
+    }
 }
