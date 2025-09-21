@@ -32,7 +32,10 @@ public class Palindrome
         // turn the arr into an int e.g., 3,2,1 -> 321
         int result = convertArrayToInt(reversedArr);
         // handle cases where integer is negative e.g., -121
-        if(result < 0) { return false;}
+        if(result < 0)
+        {
+            return false;
+        }
 
         return result == x;
     }
@@ -66,33 +69,32 @@ public class Palindrome
             arr[i] = rest;
             num = num / 10;
             i++;
-            length ++;
+            length++;
         }
         arr[i] = num;
         length++;
         // create an arr with correct number of elements
-        int res [] = new int[length];
-        for(int j = 0; j<length; j++){
+        int res[] = new int[length];
+        for(int j = 0; j < length; j++)
+        {
             res[j] = arr[j];
         }
         return res;
     }
 
-
     public int convertArrayToInt(int[] nums)
     {
         int tmp = 0;
-        int index=0;
         // We need to start at the end of the loop and go backwards, e.g., the array 3,2,1 needs to multiply 3 (i == 0) with a multiplicator of 100 (i == nums.length-1)
-        for(int i = nums.length-1; i>=0; i--){
-
-            double multiplicatorOfTen = Math.pow(10, i);
+        int index = nums.length - 1;
+        for(int i = 0; i < nums.length; i++)
+        {
+            double multiplicatorOfTen = Math.pow(10, index);
             // Get the first element in the list
-            double num = nums[index] * multiplicatorOfTen;
-            tmp += num;
-            index++;
+            double num = nums[i] * multiplicatorOfTen;
+            tmp += (int) num;
+            index--;
         }
-
         return tmp;
     }
 }
