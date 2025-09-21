@@ -78,48 +78,19 @@ public class Palindrome
         return res;
     }
 
-    // this method is bad. fix it so it works for all number lengths e.g., 10, 100, 1000, 1000000000, 1 etc.
-    // now it only works for four cases 1, 10, 100 and 1000's.
+
     public int convertArrayToInt(int[] nums)
     {
         int tmp = 0;
-        int length = nums.length;
-        int firstDigit;
-        int secondDigit;
-        int thirdDigit;
-        int fourthDigit;
+        int index=0;
+        // We need to start at the end of the loop and go backwards, e.g., the array 3,2,1 needs to multiply 3 (i == 0) with a multiplicator of 100 (i == nums.length-1)
+        for(int i = nums.length-1; i>=0; i--){
 
-
-        switch(length)
-        {
-            case 1:
-                tmp = nums[0];
-                break;
-            case 2:
-                firstDigit = nums[0] * 10;
-                secondDigit = nums[1];
-                tmp += firstDigit;
-                tmp += secondDigit;
-                break;
-            case 3:
-                firstDigit = nums[0] * 100;
-                //second has to be mult by 10
-                secondDigit = nums[1] * 10;
-                thirdDigit = nums[2];
-                tmp += firstDigit;
-                tmp += secondDigit;
-                tmp += thirdDigit;
-                break;
-            case 4:
-                firstDigit = nums[0] * 1000;
-                secondDigit = nums[1] * 100;
-                thirdDigit = nums[2] * 10;
-                fourthDigit = nums[3];
-                tmp += firstDigit;
-                tmp += secondDigit;
-                tmp += thirdDigit;
-                tmp += fourthDigit;
-                break;
+            double multiplicatorOfTen = Math.pow(10, i);
+            // Get the first element in the list
+            double num = nums[index] * multiplicatorOfTen;
+            tmp += num;
+            index++;
         }
 
         return tmp;
