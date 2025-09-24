@@ -1,13 +1,13 @@
 package leetcode;
 
-import org.example.leetcode.ScoreOfString;
+import org.example.leetcode.ScoreOfString2;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class ScoreOfStringTest
 {
-    ScoreOfString s= new ScoreOfString();
+    ScoreOfString2 s= new ScoreOfString2();
     @Test
     void testZaz(){
         int res = s.scoreOfString("zaz");
