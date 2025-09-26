@@ -23,6 +23,12 @@ public class UnknownNumber
      * @return
      */
     public String [][] findUnknownNumber(String [][] matrix){
+        // loop over ij, save eleents to aList.
+        // if ij != ?
+        // sort list
+        // loop over list, if [i]+1 == [i+1] (e.g., i == 13 +1 = 14 is 1 less than its next number 15 then go on, else that number is missing so replace the '?'
+        // loop over list, saving ordered items to new mat[][]
+
         return new String[][]{};
     }
 }

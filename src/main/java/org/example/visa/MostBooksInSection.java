@@ -40,7 +40,6 @@ public class MostBooksInSection
                         break;
                     case "sectionC":
                         if(!booksInSectionC.contains(currentBook)){
-
                             booksInSectionC.add(currentBook);}
                         break;
                 }
