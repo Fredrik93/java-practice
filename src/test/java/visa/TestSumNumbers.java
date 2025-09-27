@@ -1,13 +1,14 @@
 package visa;
 
 import org.example.visa.SumNumbers;
+import org.example.visa.SumNumbersAttempt2;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class TestSumNumbers
 {
-    private SumNumbers sn = new SumNumbers();
+    private SumNumbersAttempt2 sn = new SumNumbersAttempt2();
 
     @Test
     void testOk(){
