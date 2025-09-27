@@ -1,13 +1,14 @@
 package visa;
 
 import org.example.visa.UnknownNumber;
+import org.example.visa.UnknownNumbersAttempt2;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class UnkownNumberTest
 {
-    private UnknownNumber un = new UnknownNumber();
+    private UnknownNumbersAttempt2 un = new UnknownNumbersAttempt2();
 
     @Test
     void testOk()
