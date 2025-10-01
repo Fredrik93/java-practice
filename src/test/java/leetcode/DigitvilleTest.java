@@ -15,6 +15,12 @@ public class DigitvilleTest
         int[] res = dv.getSneakyNumbers(new int[] { 0, 1, 1, 0 });
         assertThat(res).isEqualTo(new int[] { 0, 1 });
     }
+    @Test
+    void testOk03()
+    {
+        int[] res = dv.getSneakyNumbers(new int[] { 1,2,2,1 });
+        assertThat(res).isEqualTo(new int[] { 1,2 });
+    }
 
     @Test
     void testOk1()
