@@ -4,34 +4,37 @@ public class AllowedStrings
 {
     public int countConsistentStrings(String allowed, String[] words)
     {
-        // split up allowed
-        char [] allowedChars  = allowed.toCharArray();
-        int countAllowedWords=0;
+        // split up allowed into chars
+        // loop over allowed
         // loop over words
-        for(String word : words)
+        // split up word in chars because we have to check if each char is allowed
+        // if allowedchar == wordchar is true then all good. if false, dont inkrement counter "allowedWords"
+        char[] allowedChars = allowed.toCharArray();
+        int allowedWords = 0;
+        for(char allowedChar : allowedChars)
         {
-
-            // split up word
-
-            char [] wordChar = word.toCharArray();
-            // loop over allowed
-            for(char ac : allowedChars){
-                // if allowedChars.size() == wordIsAllowed then the word is allowed
-                int charIsAllowed=0;
-            // for each allowed, loop over each char in word
-                for(char wc : wordChar)
+            for(String word : words)
+            {
+                // if charcounter is equal to the length of the word then all chars are allowed
+                int charCounter = 0;
+                char[] wordChars = word.toCharArray();
+                for(char wordChar : wordChars)
                 {
-                    // check if c in allowed exist. if not, dont inkrement counter
-                    if(ac == wc){
-                        charIsAllowed++;
+                    if(allowedChar == wordChar)
+                    {
+                        charCounter++;
                     }
-                    // return counter
+
                 }
-                if(allowedChars.length == charIsAllowed){
-                    countAllowedWords++;
+                if(charCounter == word.length())
+                {
+                    allowedWords++;
                 }
-        }}
-        return countAllowedWords;
+            }
+        }
+
+        return allowedWords;
+
     }
 
 }
