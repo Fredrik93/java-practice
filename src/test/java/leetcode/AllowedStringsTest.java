@@ -20,8 +20,8 @@ public class AllowedStringsTest
         assertThat(res).isEqualTo(7);
     }
     @Test
-    void testO2(){
-        int res = as.countConsistentStrings("ab", new String[]{"cc","acd","b","ba","bac","bad","ac","d"});
+    void testOk2(){
+        int res = as.countConsistentStrings("cad", new String[]{"cc","acd","b","ba","bac","bad","ac","d"});
         assertThat(res).isEqualTo(4);
     }
 }
