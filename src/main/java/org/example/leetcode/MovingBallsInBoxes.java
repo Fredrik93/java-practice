@@ -19,24 +19,30 @@ public class MovingBallsInBoxes
 {
     public int[] minOperations(String boxes)
     {
-        int[] input = convertToListOfInts(boxes);
+        int totalOperations = 0;
+        // convert string to int [] array. '0' is a character trick to get the correct int
+        int[] input = boxes.chars().map(c -> c - '0').toArray();
+        int [] result = new int[input.length];
 
         for(int i = 0; i < boxes.length(); i++)
         {
-            // loop
+            // keep track of current i
+            // iniside, loop again, go over all i != j
 
+            for(int j = 0; j<input.length; j++)
+            {
+                int current = input[j];
+                // if input[j] has a 1, count how many steps in needs to take to go to current i (so, maybe i -j = steps )
+                if(current == 1 && i != j){
+                    int stepsToOrigin = Math.abs(i-j);
+                    totalOperations += stepsToOrigin;
+                }
+                // count total number ofsteps
+            }
+            result[i] = totalOperations;
+            totalOperations =0;
         }
-        return new int[] { -1 };
+        return result;
     }
 
-    private int[] convertToListOfInts(String boxes)
-    {
-        char[] charArr = boxes.toCharArray();
-        int[] input = new int[charArr.length];
-        for(int i = 0; i < charArr.length; i++)
-        {
-            input[i] = Integer.parseInt(String.valueOf(charArr[i]));
-        }
-        return input;
-    }
 }
