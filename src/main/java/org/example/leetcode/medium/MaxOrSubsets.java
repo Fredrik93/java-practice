@@ -31,6 +31,8 @@ public class MaxOrSubsets
         int maxOR = 3 | 1;
         int amountOfSubsets = 0;
         // loop over all subsets
+
+        // probably remove this, youll need 'backtracking' to find all subsets
         for(int i = 0; i <  nums.length-1; i++)
         {
             if(nums[i] == maxOR){
@@ -42,6 +44,11 @@ public class MaxOrSubsets
             amountOfSubsets++;
             }
         }
+        // find all subsets:
+        // Number of Subsets of an array of size n = 2n
+        int size = (int) Math.pow(2, nums.length);
+        int [][] subsets = new int[][]{};
+
         return amountOfSubsets;
     }
 }
