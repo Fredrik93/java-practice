@@ -1,6 +1,8 @@
 package org.example.leetcode.medium;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Given an integer array nums, find the maximum possible bitwise OR of a subset of nums and return the number of
@@ -28,27 +30,28 @@ public class MaxOrSubsets
 {
     public int countMaxOrSubsets(int[] nums)
     {
-        int maxOR = 3 | 1;
-        int amountOfSubsets = 0;
-        // loop over all subsets
 
-        // probably remove this, youll need 'backtracking' to find all subsets
-        for(int i = 0; i <  nums.length-1; i++)
-        {
-            if(nums[i] == maxOR){
-                System.out.println("found a subset: " + nums[i]);
-                amountOfSubsets++;
-            }
-            if((nums[i] | nums [i+1]) == maxOR){
-                System.out.println("found a subset: " + nums[i] + " | " + nums[i+1]);
-            amountOfSubsets++;
-            }
+        List<List<Integer>> subsets = subsets(nums);
+        int maxOr = 0;
+        for(int n: nums){
+maxOr |= n;
         }
-        // find all subsets:
-        // Number of Subsets of an array of size n = 2n
-        int size = (int) Math.pow(2, nums.length);
-        int [][] subsets = new int[][]{};
-
-        return amountOfSubsets;
+        return subsets.size();
     }
+    void dfs(int[] nums, int i, List<List<Integer>> res, List<Integer> subset) {
+        if(i == nums.length){res.add(new ArrayList<>(subset)); return;}
+
+        subset.add(nums[i]);
+        dfs(nums, i+1, res,subset);
+        subset.remove(subset.size()-1);
+        dfs(nums, i+1, res, subset);
+
+    }
+    public List<List<Integer>> subsets (int []nums){
+        List<List<Integer>> res = new ArrayList<>();
+        List<Integer> subset = new ArrayList<>();
+        dfs(nums, 0, res,subset);
+        return res;
+    }
+
 }
