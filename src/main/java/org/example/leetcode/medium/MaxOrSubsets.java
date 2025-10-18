@@ -33,24 +33,43 @@ public class MaxOrSubsets
 
         List<List<Integer>> subsets = subsets(nums);
         int maxOr = 0;
-        for(int n: nums){
-maxOr |= n;
+        int maxOrSubsets = 0;
+        for(int n : nums)
+        {
+            maxOr |= n;
         }
-        return subsets.size();
+        for(List<Integer> set : subsets){
+            int ORnums = 0;
+            for(Integer num : set){
+                ORnums |= num;
+            }
+            if(ORnums == maxOr){
+                maxOrSubsets++;
+            }
+        }
+        return maxOrSubsets;
     }
-    void dfs(int[] nums, int i, List<List<Integer>> res, List<Integer> subset) {
-        if(i == nums.length){res.add(new ArrayList<>(subset)); return;}
+
+    void dfs(int[] nums, int i, List<List<Integer>> res, List<Integer> subset)
+    {
+        if(i == nums.length)
+        {
+            res.add(new ArrayList<>(subset));
+            return;
+        }
 
         subset.add(nums[i]);
-        dfs(nums, i+1, res,subset);
-        subset.remove(subset.size()-1);
-        dfs(nums, i+1, res, subset);
+        dfs(nums, i + 1, res, subset);
+        subset.remove(subset.size() - 1);
+        dfs(nums, i + 1, res, subset);
 
     }
-    public List<List<Integer>> subsets (int []nums){
+
+    public List<List<Integer>> subsets(int[] nums)
+    {
         List<List<Integer>> res = new ArrayList<>();
         List<Integer> subset = new ArrayList<>();
-        dfs(nums, 0, res,subset);
+        dfs(nums, 0, res, subset);
         return res;
     }
 
