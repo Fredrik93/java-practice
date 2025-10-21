@@ -4,7 +4,7 @@ public class StrictlyPalindromic
 {
     public boolean isStrictlyPalindromic(int n)
     {
-        // loop n - 2 times ( inclusive so n = 9 -> 9 - 2 = 7
+
 
         for(int i = 2; i <= n - 2; i++)
         {
