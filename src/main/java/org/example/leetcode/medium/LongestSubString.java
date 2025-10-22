@@ -1,16 +1,12 @@
 package org.example.leetcode.medium;
 
-import javax.management.StringValueExp;
 
 public class LongestSubString
 {
     public int lengthOfLongestSubstring(String s)
     {
-        // convert to chararr
-        // loop over chararr
         char[] charArr = s.toCharArray();
         int longestSubString = 0;
-
         for(int i = 0; i < charArr.length; i++)
         {
             StringBuilder sb = new StringBuilder();
@@ -20,15 +16,17 @@ public class LongestSubString
                 // starting from eahxh el j, add el j to new strng "tmp" until a duplicqte shows
                 // compare
 
-                if(sb.toString().contains(String.valueOf(charArr[j]))){
+                if(!sb.toString().contains(String.valueOf(charArr[j]))){
                     sb.append(charArr[j]);
-                }
+                } else { break;}
                 //  var longest and compare longest <= tmp = longest = tmp
                 // return longest
+
             }
-            if(longestSubString < sb.length()){
+            if(longestSubString <= sb.length()){
                 longestSubString = sb.length();
             }
+
         }
         return longestSubString;
     }
