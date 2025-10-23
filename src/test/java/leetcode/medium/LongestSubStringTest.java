@@ -13,11 +13,13 @@ public class LongestSubStringTest
     void testOk(){
         int res = ls.lengthOfLongestSubstring("abcabcbb");
         assertThat(res).isEqualTo(3);
+        assertThat(ls.lengthOfLongestSubstring("bbbbb")).isEqualTo(1);
+
     }
     @Test
     void testOk1(){
         int res = ls.lengthOfLongestSubstring("bbbbb");
-        assertThat(res).isEqualTo(1);
+        assertThat(ls.lengthOfLongestSubstring("bbbbb")).isEqualTo(1);
     }
     @Test
     void testOk2(){
