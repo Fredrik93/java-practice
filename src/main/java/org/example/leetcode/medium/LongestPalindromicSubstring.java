@@ -2,15 +2,37 @@ package org.example.leetcode.medium;
 
 public class LongestPalindromicSubstring
 {
-    public String longestPalindrome(String s) {
+    public String longestPalindrome(String s)
+    {
         // convert to chararr
+        char[] arr = s.toCharArray();
         //loop over i
-        // loop over j
-        // for each new j, create a stringbuilder and reverse it
-        // compare stringbuilder to current tmpSubString
-        // if equal after adding a new letter, save substring to var subbs
-        // compare var subst to longestSubstring, keep the longest
-        // return longest
-        return null;
+        String longestSubString = "";
+
+        for(int i = 0; i < arr.length; i++)
+        {
+            String tmpSubString = "";
+            StringBuilder sb = new StringBuilder();
+            String reversed = "";
+            for(int j = i ; j < arr.length; j++)
+            {
+                char el = arr[j];
+                sb.append(el);
+                tmpSubString = sb.toString();
+                reversed = sb.reverse().toString();
+                if(tmpSubString.equals(reversed)){
+                    if(tmpSubString.length() > longestSubString.length())
+                    {
+                        longestSubString = tmpSubString;
+                    }
+                }
+
+
+
+
+
+            }
+        }
+        return longestSubString;
     }
 }
