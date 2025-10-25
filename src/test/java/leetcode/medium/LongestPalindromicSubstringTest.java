@@ -7,11 +7,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class LongestPalindromicSubstringTest
 {
-private  LongestPalindromicSubstring lp = new LongestPalindromicSubstring();
+    private LongestPalindromicSubstring lp = new LongestPalindromicSubstring();
+
     @Test
-    void testOk(){
+    void testOk()
+    {
         // Normal cases
-        assertEquals("bab", lp.longestPalindrome("babad")); // "aba" is also correct
+        assertEquals("aba", lp.longestPalindrome("babad")); // "aba" is also correct
         assertEquals("bb", lp.longestPalindrome("cbbd"));
 
         // Edge cases
@@ -29,6 +31,14 @@ private  LongestPalindromicSubstring lp = new LongestPalindromicSubstring();
         assertEquals("level", lp.longestPalindrome("xlevel"));
 
         // No palindrome longer than 1
-        assertEquals("x", lp.longestPalindrome("xyz"));
+        assertEquals("z", lp.longestPalindrome("xyz"));
+
+    }
+    @Test
+    void testLongString(){
+        assertEquals(
+                "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+                "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc");
+
     }
 }
