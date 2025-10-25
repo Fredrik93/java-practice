@@ -9,21 +9,19 @@ public class LongestPalindromicSubstring
 
         for(int i = 0; i < arr.length; i++)
         {
-            String tmpSubString = "";
             StringBuilder sb = new StringBuilder();
             String reversed;
             for(int j = i; j < arr.length; j++)
             {
                 char el = arr[j];
                 sb.append(el);
-                tmpSubString = sb.toString();
-                reversed = new StringBuilder(tmpSubString).reverse().toString();
+                reversed = new StringBuilder(sb.toString()).reverse().toString();
 
-                if(tmpSubString.equals(reversed))
+                if(sb.toString().equals(reversed))
                 {
-                    if(tmpSubString.length() >= longestSubString.length())
+                    if(sb.toString().length() > longestSubString.length())
                     {
-                        longestSubString = tmpSubString;
+                        longestSubString = sb.toString();
                     }
                 }
 
@@ -32,3 +30,4 @@ public class LongestPalindromicSubstring
         return longestSubString;
     }
 }
+
