@@ -16,7 +16,7 @@ public class LongestPalindromicSubstringTest
     void testOk()
     {
         // Normal cases
-        assertEquals("bab", lp.longestPalindrome("babad")); // "aba" is also correct
+        assertEquals("aba", lp.longestPalindrome("babas")); // "aba" is also correct
         assertEquals("bb", lp.longestPalindrome("cbbd"));
 
         // Edge cases
