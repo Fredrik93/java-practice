@@ -13,10 +13,15 @@ public class LongestPalindromicSubstringTest
     private LongestPalindromicSubstring lp = new LongestPalindromicSubstring();
 
     @Test
+    void testOk1(){
+        assertEquals("bab", lp.longestPalindrome("babas")); // "aba" is also correct
+
+    }
+    @Test
     void testOk()
     {
         // Normal cases
-        assertEquals("aba", lp.longestPalindrome("babas")); // "aba" is also correct
+        assertEquals("bab", lp.longestPalindrome("babas")); // "aba" is also correct
         assertEquals("bb", lp.longestPalindrome("cbbd"));
 
         // Edge cases
