@@ -21,7 +21,18 @@ public class ZigzagConversion
         // i need q 2 dim array
         // numrows define how many vertical dimensions i need
         // try a 2d array with ex1 and start adding chars
-        char [] [] zigzag = new char[numRows][7];
+        char [] [] zigzag = new char[3][7];
+        int k = 0;
+        for(int i = 0; i<3; i++){
+            for(int j = 0; j < 7 ; j++)
+            {
+                if(k < arr.length)
+                {
+                    zigzag[i][j] = arr[k];
+                    k++;
+                }
+            }
+        }
         print2D(zigzag);
         boolean h = true;
         return null;
