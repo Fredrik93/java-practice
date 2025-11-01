@@ -23,15 +23,20 @@ public class ZigzagConversion
         // try a 2d array with ex1 and start adding chars
         char [] [] zigzag = new char[3][7];
         int k = 0;
-        for(int i = 0; i<3; i++){
-            for(int j = 0; j < 7 ; j++)
+        int l = 0;
+        for(int i = 0; i<5; i++){
+            for(int j = 0; j < 5 ; j++)
             {
                 if(k < arr.length)
                 {
-                    zigzag[i][j] = arr[k];
+                    zigzag[k][l] = arr[k];
                     k++;
                 }
+
+
             }
+            l++;
+
         }
         print2D(zigzag);
         boolean h = true;
