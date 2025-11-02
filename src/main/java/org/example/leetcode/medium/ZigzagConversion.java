@@ -20,18 +20,26 @@ public class ZigzagConversion
         char[] arr = s.toCharArray();
         int rowLength = 7;
         char[][] zigzag = new char[numRows][rowLength];
-
+        int tmpIndex = 0;
+        int arrIndex = 0;
         for(int i = 0; i < numRows; i++)
         {
-            int tmpIndex = 0;
             for(int j = 0; j < numRows; j++)
             {
 
-                if(i == 0 || i % 2 == 0)
+                if(i % 2 == 0)
                 {
-                    // i is 0 or uneven so we add from arr vertically
-                    zigzag[tmpIndex][i] = arr[tmpIndex];
+                    // i is 0 or even so we add from arr vertically
+                    zigzag[tmpIndex][i] = arr[arrIndex];
                     tmpIndex++;
+                    arrIndex++;
+                } else {
+                    int middle = numRows / 2;
+                    zigzag[middle][i] = arr[tmpIndex];
+                    i++;
+                    arrIndex++;
+                    tmpIndex = 0;
+
                 }
             }
         }
