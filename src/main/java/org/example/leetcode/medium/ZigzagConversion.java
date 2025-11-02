@@ -18,33 +18,31 @@ public class ZigzagConversion
     public String convert(String s, int numRows)
     {
         char[] arr = s.toCharArray();
-        // i need q 2 dim array
-        // numrows define how many vertical dimensions i need
-        // try a 2d array with ex1 and start adding chars
-        char [] [] zigzag = new char[3][7];
-        int k = 0;
-        int l = 0;
-        for(int i = 0; i<5; i++){
-            for(int j = 0; j < 5 ; j++)
+        int rowLength = 7;
+        char[][] zigzag = new char[numRows][rowLength];
+
+        for(int i = 0; i < numRows; i++)
+        {
+            int tmpIndex = 0;
+            for(int j = 0; j < numRows; j++)
             {
-                if(k < arr.length)
+
+                if(i == 0 || i % 2 == 0)
                 {
-                    zigzag[k][l] = arr[k];
-                    k++;
+                    // i is 0 or uneven so we add from arr vertically
+                    zigzag[tmpIndex][i] = arr[tmpIndex];
+                    tmpIndex++;
                 }
-
-
             }
-            l++;
-
         }
         print2D(zigzag);
-        boolean h = true;
         return null;
     }
 
-    static void print2D(char[][] arr) {
-        for (char[] row : arr) {
+    static void print2D(char[][] arr)
+    {
+        for(char[] row : arr)
+        {
             System.out.println(Arrays.toString(row));
         }
     }
