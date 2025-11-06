@@ -33,7 +33,7 @@ public class ZigzagConversion
         char[][] zigzag = new char[numRows][rowLength];
         int tmpIndex = 0;
         int arrIndex = 0;
-        // start adding the element at the penultimate place in the array
+        // start adding the element at the penultimate spot
         int placeOfMiddleNumber = numRows-2;
         for(int i = 0; i < arr.length; i++)
         {
