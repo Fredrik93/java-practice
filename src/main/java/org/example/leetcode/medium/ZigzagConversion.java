@@ -54,15 +54,17 @@ public class ZigzagConversion
             }
             else
             {
-                zigzag[placeOfMiddleNumber][i] = arr[arrIndex];
-                if(placeOfMiddleNumber != numRows -2)
+                if(arrIndex < arr.length)
                 {
-                    placeOfMiddleNumber--;
+                    zigzag[placeOfMiddleNumber][i] = arr[arrIndex];
+                    if(placeOfMiddleNumber != numRows - 2)
+                    {
+                        placeOfMiddleNumber--;
+                    }
+                    arrIndex++;
+                    tmpIndex = 0;
                 }
-                arrIndex++;
-                tmpIndex = 0;
             }
-
         }
         return null;
     }
