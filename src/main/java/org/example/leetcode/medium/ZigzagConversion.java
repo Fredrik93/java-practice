@@ -34,35 +34,47 @@ public class ZigzagConversion
         int tmpIndex = 0;
         int arrIndex = 0;
         // start adding the element at the penultimate spot
-        int placeOfMiddleNumber = numRows-2;
-        for(int i = 0; i < arr.length; i++)
+        int placeOfMiddleNumber = 0;
+        int amountOfMiddleSteps = numRows / 2;
+        for(int i = 0; i < arr.length-1; i++)
         {
+            placeOfMiddleNumber = numRows -2 ;
 
-            if(i % 2 == 0)
             {
-                for(int j = 0; j < numRows; j++)
+                if(i % 2 == 0)
                 {
-                    if(arrIndex == arr.length)
+                    for(int j = 0; j < numRows; j++)
                     {
-                        return zigzag;
-                    }
-                    zigzag[tmpIndex][i] = arr[arrIndex];
-                    arrIndex++;
-                    tmpIndex++;
+                        if(arrIndex == arr.length)
+                        {
+                            return zigzag;
+                        }
+                        zigzag[tmpIndex][i] = arr[arrIndex];
 
+                        arrIndex++;
+                        tmpIndex++;
+
+                    }
                 }
-            }
-            else
-            {
-                if(arrIndex < arr.length)
+
+                else
                 {
-                    zigzag[placeOfMiddleNumber][i] = arr[arrIndex];
-                    if(placeOfMiddleNumber != numRows - 2)
+                    for(int j = 0; j < amountOfMiddleSteps; j++)
                     {
-                        placeOfMiddleNumber--;
+
+                        if(arrIndex < arr.length)
+                        {
+                            zigzag[placeOfMiddleNumber][i] = arr[arrIndex];
+
+                            placeOfMiddleNumber--;
+                            if(i < numRows)
+                            {
+                                i++;
+                            }
+                            arrIndex++;
+                            tmpIndex = 0;
+                        }
                     }
-                    arrIndex++;
-                    tmpIndex = 0;
                 }
             }
         }
@@ -80,8 +92,10 @@ public class ZigzagConversion
             {
 
                 char element = arr[i][j];
-                if(Character.isLetterOrDigit(element)){
-                sb.append(element);}
+                if(Character.isLetterOrDigit(element))
+                {
+                    sb.append(element);
+                }
             }
         }
         return sb.toString();
