@@ -67,7 +67,7 @@ public class ZigzagConversion
                             zigzag[placeOfMiddleNumber][i] = arr[arrIndex];
 
                             placeOfMiddleNumber--;
-                            if(i < numRows)
+                            if(i < numRows && tmpIndex != 0)
                             {
                                 i++;
                             }
