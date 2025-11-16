@@ -28,57 +28,24 @@ public class ZigzagConversion
 
     private static char[][] mapTo2DArray(String s, int numRows)
     {
-        char[] arr = s.toCharArray();
-        int rowLength = 7;
-        char[][] zigzag = new char[numRows][rowLength];
-        int tmpIndex = 0;
-        int arrIndex = 0;
-        // start adding the element at the penultimate spot
-        int placeOfMiddleNumber = 0;
-        int amountOfMiddleSteps = numRows / 2;
-        for(int i = 0; i < arr.length-1; i++)
+        // iterate numrows times
+      char [][] zigzag = new char[numRows][7];
+
+          StringBuilder sb = new StringBuilder(s);
+        for(int i = 0; i < numRows; i++)
         {
-            placeOfMiddleNumber = numRows -2 ;
-
+            for(int j = 0; j < 7; j++)
             {
-                if(i % 2 == 0)
-                {
-                    for(int j = 0; j < numRows; j++)
-                    {
-                        if(arrIndex == arr.length)
-                        {
-                            return zigzag;
-                        }
-                        zigzag[tmpIndex][i] = arr[arrIndex];
+                zigzag[i][j] = sb.charAt(0);
+                sb.deleteCharAt(0);
 
-                        arrIndex++;
-                        tmpIndex++;
-
-                    }
-                }
-
-                else
-                {
-                    for(int j = 0; j < amountOfMiddleSteps; j++)
-                    {
-
-                        if(arrIndex < arr.length)
-                        {
-                            zigzag[placeOfMiddleNumber][i] = arr[arrIndex];
-
-                            placeOfMiddleNumber--;
-                            if(i < numRows && tmpIndex != 0)
-                            {
-                                i++;
-                            }
-                            arrIndex++;
-                            tmpIndex = 0;
-                        }
-                    }
-                }
             }
         }
-        return null;
+          return  zigzag;
+            // rest only add one element
+            // repeat until no more elements
+
+
     }
 
     private String buildString(char[][] arr, int arrSize)
