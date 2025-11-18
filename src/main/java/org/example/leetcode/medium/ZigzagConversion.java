@@ -20,7 +20,6 @@ public class ZigzagConversion
     {
 
         char[][] zigzag = mapTo2DArray(s, numRows);
-
         String result = buildString(zigzag, s.length());
         print2D(zigzag);
         return result;
@@ -28,23 +27,38 @@ public class ZigzagConversion
 
     private static char[][] mapTo2DArray(String s, int numRows)
     {
+        int columns = numRows;
+        int rowLength = 7;
         // iterate numrows times
-      char [][] zigzag = new char[numRows][7];
-
-          StringBuilder sb = new StringBuilder(s);
-        for(int i = 0; i < numRows; i++)
+        char[][] zigzag = new char[columns][rowLength];
+        StringBuilder word = new StringBuilder(s);
+        while(!word.isEmpty()){
+        for(int i = 0; i < columns; i++)
         {
-            for(int j = 0; j < 7; j++)
+            int yPosition = columns-i-1;
+            int xPosition = i;
+
+            // fill column 0 with letters
+            if(i == 0)
             {
-                zigzag[i][j] = sb.charAt(0);
-                sb.deleteCharAt(0);
+                for(int j = 0; j < columns; j++)
+                {
+                    zigzag[j][0] = word.charAt(0);
+                    word.deleteCharAt(0);
+                }
+            } else
+            {
+            zigzag[yPosition][xPosition] = word.charAt(0);
+                word.deleteCharAt(0);
+            }
 
             }
-        }
-          return  zigzag;
-            // rest only add one element
-            // repeat until no more elements
 
+        }
+
+        return zigzag;
+        // rest only add one element
+        // repeat until no more elements
 
     }
 
