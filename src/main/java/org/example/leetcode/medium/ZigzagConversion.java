@@ -27,32 +27,11 @@ public class ZigzagConversion
 
     private static char[][] mapTo2DArray(String s, int numRows)
     {
-        int columns = numRows;
+
         int rowLength = 7;
-        // iterate numrows times
-        char[][] zigzag = new char[columns][rowLength];
+        char[][] zigzag = new char[numRows][rowLength];
         StringBuilder word = new StringBuilder(s);
         while(!word.isEmpty()){
-        for(int i = 0; i < columns; i++)
-        {
-            int yPosition = columns-i-1;
-            int xPosition = i;
-
-            // fill column 0 with letters
-            if(i == 0)
-            {
-                for(int j = 0; j < columns; j++)
-                {
-                    zigzag[j][0] = word.charAt(0);
-                    word.deleteCharAt(0);
-                }
-            } else
-            {
-            zigzag[yPosition][xPosition] = word.charAt(0);
-                word.deleteCharAt(0);
-            }
-
-            }
 
         }
 
