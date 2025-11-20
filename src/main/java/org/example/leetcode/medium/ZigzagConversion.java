@@ -31,7 +31,30 @@ public class ZigzagConversion
         int rowLength = 7;
         char[][] zigzag = new char[numRows][rowLength];
         StringBuilder word = new StringBuilder(s);
-        while(!word.isEmpty()){
+        int k = numRows - 2;
+        int j = 0;
+        int column = 0;
+        while(!word.isEmpty())
+
+        {
+
+            for(int i = 0; i < numRows; i++)
+            {
+                zigzag[i][column] = word.charAt(0);
+                word.deleteCharAt(0);
+
+            }
+            j++;
+            column++;
+
+            zigzag[k][column] = word.charAt(0);
+            word.deleteCharAt(0);
+            k--;
+            column++;
+            if(numRows == 3)
+            {
+                column--;
+            }
 
         }
 
