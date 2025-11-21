@@ -25,4 +25,9 @@ public class ZigzagConversionTest
         String result = zc.convert("A", 1);
         assertThat(result).isEqualTo("A");
     }
+    @Test
+    void testOk3(){
+        String result = zc.convert("AB", 1);
+        assertThat(result).isEqualTo("AB");
+    }
 }

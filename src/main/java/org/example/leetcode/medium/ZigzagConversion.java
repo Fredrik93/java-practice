@@ -79,8 +79,6 @@ public class ZigzagConversion
         }
 
         return zigzag;
-        // rest only add one element
-        // repeat until no more elements
 
     }
 
