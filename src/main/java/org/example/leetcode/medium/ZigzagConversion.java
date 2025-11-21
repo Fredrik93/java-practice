@@ -38,23 +38,29 @@ public class ZigzagConversion
 
         {
 
-            for(int i = 0; i < numRows; i++)
-            {
-                zigzag[i][column] = word.charAt(0);
-                word.deleteCharAt(0);
+                for(int i = 0; i < numRows; i++)
+                {
+                    if(!word.isEmpty())
+                    {
+                    zigzag[i][column] = word.charAt(0);
+                    word.deleteCharAt(0);
+                    j++;
+                }}
 
-            }
-            j++;
-            column++;
+                j++;
+                column++;
+                if(!word.isEmpty())
+                {
 
-            zigzag[k][column] = word.charAt(0);
-            word.deleteCharAt(0);
-            k--;
-            column++;
-            if(numRows == 3)
-            {
-                column--;
-            }
+                    zigzag[k][column] = word.charAt(0);
+                    word.deleteCharAt(0);
+                }
+                if(numRows != 3)
+                {
+                    k--;
+                }
+                column++;
+
 
         }
 
