@@ -38,20 +38,23 @@ public class ZigzagConversion
 
         {
 
-                for(int i = 0; i < numRows; i++)
+            for(int i = 0; i < numRows; i++)
+            {
+                if(!word.isEmpty())
                 {
-                    if(!word.isEmpty())
-                    {
                     zigzag[i][column] = word.charAt(0);
                     word.deleteCharAt(0);
                     j++;
-                }}
+                }
+            }
 
-                j++;
-                column++;
-                if(numRows == 4){
-                    k = numRows-2;
-                    for(int i = 0; i< 2; i++){
+            j++;
+            column++;
+            if(numRows == 4)
+            {
+                k = numRows - 2;
+                for(int i = 0; i < 2; i++)
+                {
                     if(!word.isEmpty())
                     {
 
@@ -61,20 +64,22 @@ public class ZigzagConversion
                     k--;
                     column++;
 
-                }}else
-                {
-                    if(!word.isEmpty())
-                    {
-
-                        zigzag[k][column] = word.charAt(0);
-                        word.deleteCharAt(0);
-                    }
-                    if(numRows != 3)
-                    {
-                        k--;
-                    }
-                    column++;
                 }
+            }
+            else
+            {
+                if(!word.isEmpty())
+                {
+
+                    zigzag[k][column] = word.charAt(0);
+                    word.deleteCharAt(0);
+                }
+                if(numRows != 3)
+                {
+                    k--;
+                }
+                column++;
+            }
 
         }
 
