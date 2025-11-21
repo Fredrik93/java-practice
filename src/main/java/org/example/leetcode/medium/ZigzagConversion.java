@@ -20,7 +20,7 @@ public class ZigzagConversion
     {
 
         char[][] zigzag = mapTo2DArray(s, numRows);
-        String result = buildString(zigzag, s.length());
+        String result = buildString(zigzag, numRows);
         print2D(zigzag);
         return result;
     }
@@ -49,18 +49,32 @@ public class ZigzagConversion
 
                 j++;
                 column++;
-                if(!word.isEmpty())
-                {
+                if(numRows == 4){
+                    k = numRows-2;
+                    for(int i = 0; i< 2; i++){
+                    if(!word.isEmpty())
+                    {
 
-                    zigzag[k][column] = word.charAt(0);
-                    word.deleteCharAt(0);
-                }
-                if(numRows != 3)
-                {
+                        zigzag[k][column] = word.charAt(0);
+                        word.deleteCharAt(0);
+                    }
                     k--;
-                }
-                column++;
+                    column++;
 
+                }}else
+                {
+                    if(!word.isEmpty())
+                    {
+
+                        zigzag[k][column] = word.charAt(0);
+                        word.deleteCharAt(0);
+                    }
+                    if(numRows != 3)
+                    {
+                        k--;
+                    }
+                    column++;
+                }
 
         }
 
@@ -70,11 +84,11 @@ public class ZigzagConversion
 
     }
 
-    private String buildString(char[][] arr, int arrSize)
+    private String buildString(char[][] arr, int numRows)
     {
         StringBuilder sb = new StringBuilder();
         // the sizes are hardcoded, fix that
-        for(int i = 0; i < 3; i++)
+        for(int i = 0; i < numRows; i++)
         {
 
             for(int j = 0; j < 7; j++)
