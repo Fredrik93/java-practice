@@ -30,4 +30,28 @@ public class ZigzagConversionTest
         String result = zc.convert("AB", 1);
         assertThat(result).isEqualTo("AB");
     }
+    @Test
+    void testOk4(){
+        String result = zc.convert("ABCDE", 1);
+        assertThat(result).isEqualTo("ABCDE");
+    }
+    @Test
+    void testOk5(){
+        String result = zc.convert("PAYPALISHIRING", 1);
+        assertThat(result).isEqualTo("PAYPALISHIRING");
+    }
+    @Test
+    void testOk6(){
+        String result = zc.convert("PAYPALISHIRING", 2);
+        assertThat(result).isEqualTo("PYAIHRNAPLSIIG");
+    }
+    @Test
+    void testOk7(){
+        String result = zc.convert("ABC", 2);
+        assertThat(result).isEqualTo("ACB");
+    }   @Test
+void testOk8(){
+    String result = zc.convert("PAYPALISHIRING", 5);
+    assertThat(result).isEqualTo("PHASIYIRPLIGAN");
+}
 }
