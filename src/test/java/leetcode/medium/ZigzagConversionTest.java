@@ -85,6 +85,13 @@ public class ZigzagConversionTest
         String result = zc.convert("PAYPALISHIRING", 7);
             assertThat(result).isEqualTo("PNAIGYRPIAHLSI");
     }
+
+    @Test
+    void testOk11()
+    {
+        String result = zc.convert("Apalindromeisaword,phrase,number,orothersequenceofunitsthatcanbereadthesamewayineitherdirection,withgeneralallowancesforadjustmentstopunctuationandworddividers.", 2);
+        assertThat(result).isEqualTo("Aaidoeswr,haenme,rtesqecouishtabrateaeaietedrcinwtgnrlloacsoajsmnsoucutoadodiiesplnrmiaodprs,ubroohreunefnttacneedhsmwynihrieto,iheeaalwnefrdutettpntainnwrdvdr.");
+    }
 }
 
 
