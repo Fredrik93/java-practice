@@ -17,42 +17,56 @@ import java.util.Objects;
 public class ZigzagConversion
 {
     public String convert(String s, int numRows)
-    {
-        if (numRows <= 1) { return s;}
-        char[][] zigzag = mapTo2DArray(s, numRows);
-        String result = buildString(zigzag, numRows);
-        print2D(zigzag);
-        return result;
-    }
+        {
+            if (numRows <= 1) { return s;}
+            char[][] zigzag = mapTo2DArray(s, numRows);
+            String result = buildString(zigzag, numRows);
+            print2D(zigzag);
+            return result;
+        }
 
-    private static char[][] mapTo2DArray(String s, int numRows)
-    {
-
-        int rowLength = 7;
-        char[][] zigzag = new char[numRows][rowLength];
-        StringBuilder word = new StringBuilder(s);
-        int k = numRows - 2;
-        int j = 0;
-        int column = 0;
-
-        while(!word.isEmpty())
-
+        private static char[][] mapTo2DArray(String s, int numRows)
         {
 
-            for(int i = 0; i < numRows; i++)
+            int rowLength = 7;
+            char[][] zigzag = new char[numRows][rowLength];
+            StringBuilder word = new StringBuilder(s);
+            int k = numRows - 2;
+            int j = 0;
+            int zigzags = 0;
+            int column = 0;
+
+            while(!word.isEmpty())
+
             {
-                if(!word.isEmpty())
+
+                for(int i = 0; i < numRows; i++)
                 {
-                    zigzag[i][column] = word.charAt(0);
-                    word.deleteCharAt(0);
-                    j++;
+                    if(!word.isEmpty())
+                    {
+                        zigzag[i][column] = word.charAt(0);
+                        word.deleteCharAt(0);
+                        j++;
+                    }
                 }
-            }
+
+                /**
+                 * rows zigs
+                 * 3 : 1
+                 * 4 : 2
+                 * 5 : 3
+                 * 6 : 4
+                 * 7 : 5
+                 * 8: 6
+                 * 9: 7
+                 */
 
             j++;
             if(numRows > 2){
             column++;
             }
+
+
             if(numRows == 4)
             {
                 k = numRows - 2;
@@ -61,63 +75,108 @@ public class ZigzagConversion
                     if(!word.isEmpty())
                     {
 
+                            zigzag[k][column] = word.charAt(0);
+                            word.deleteCharAt(0);
+                        }
+                        k--;
+                        column++;
+
+                    }
+                }
+                else if(numRows == 5 ){
+                    k = numRows - 2;
+                    for(int i = 0; i < 3; i++)
+                    {
+                        if(!word.isEmpty())
+                        {
+
+                            zigzag[k][column] = word.charAt(0);
+                            word.deleteCharAt(0);
+                        }
+                        k--;
+                        column++;
+
+                    }
+                }
+                else if(numRows == 6 ){
+                    k = numRows - 2;
+                    for(int i = 0; i < 4; i++)
+                    {
+                        if(!word.isEmpty())
+                        {
+
+                            zigzag[k][column] = word.charAt(0);
+                            word.deleteCharAt(0);
+                        }
+                        k--;
+                        column++;
+
+                    }
+                }
+                else if(numRows > 2 ){
+                    k = numRows - 2;
+
+                    for(int i = 0; i < numRows -2; i++)
+                    {
+                        if(!word.isEmpty())
+                        {
+
+                            zigzag[k][column] = word.charAt(0);
+                            word.deleteCharAt(0);
+                        }
+                        k--;
+                        column++;
+
+                    }
+                }
+
+
+                else
+                {
+                    if(!word.isEmpty() && numRows > 2)
+                    {
+
                         zigzag[k][column] = word.charAt(0);
                         word.deleteCharAt(0);
                     }
-                    k--;
+                    if(numRows != 3)
+                    {
+                        k--;
+                    }
                     column++;
-
                 }
-            }
-            else if(numRows == 5 ){
 
             }
-            else
-            {
-                if(!word.isEmpty() && numRows > 2)
-                {
 
-                    zigzag[k][column] = word.charAt(0);
-                    word.deleteCharAt(0);
-                }
-                if(numRows != 3)
-                {
-                    k--;
-                }
-                column++;
-            }
+            return zigzag;
 
         }
 
-        return zigzag;
-
-    }
-
-    private String buildString(char[][] arr, int numRows)
-    {
-        StringBuilder sb = new StringBuilder();
-        int rowLength = arr[0].length;
-        for(int i = 0; i < numRows; i++)
+        private String buildString(char[][] arr, int numRows)
         {
-
-            for(int j = 0; j < rowLength; j++)
+            StringBuilder sb = new StringBuilder();
+            int rowLength = arr[0].length;
+            for(int i = 0; i < numRows; i++)
             {
 
-                char element = arr[i][j];
-                if(Character.isLetterOrDigit(element))
+                for(int j = 0; j < rowLength; j++)
                 {
-                    sb.append(element);
+
+                    char element = arr[i][j];
+                    if(Character.isLetterOrDigit(element))
+                    {
+                        sb.append(element);
+                    }
                 }
             }
+            return sb.toString();
         }
-        return sb.toString();
-    }
 
-    static void print2D(char[][] arr)
-    {
-        for(char[] row : arr)
+        static void print2D(char[][] arr)
         {
-            System.out.println(Arrays.toString(row));
+            for(char[] row : arr)
+            {
+                System.out.println(Arrays.toString(row));
+            }
         }
     }
-}
