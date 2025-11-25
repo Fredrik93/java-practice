@@ -29,4 +29,19 @@ public class ReverseIntegerTest
         int res = ri.reverse(120);
         assertThat(res).isEqualTo(21);
     }
+    @Test
+    void testOk4()
+    {
+        int res = ri.reverse(900000);
+        assertThat(res).isEqualTo(9);
+    }
+    @Test
+    void testOk5()
+    {
+        int res = ri.reverse(1534236469);
+        assertThat(res).isEqualTo(-1);
+    }
+
+
+
 }

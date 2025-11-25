@@ -12,7 +12,6 @@ public class ReverseInteger
 {
     public int reverse(int x)
     {
-        if(x < -321 || x > 321){ return 0;}
         StringBuilder input = new StringBuilder(String.valueOf(x));
         int number = 0;
         if(input.charAt(0) == '-')
@@ -20,12 +19,17 @@ public class ReverseInteger
             input.deleteCharAt(0);
             input.reverse();
             number = Integer.parseInt(input.toString());
-            return number * -1;
+            number *= -1;
+            if(number < -321 || number > 321){ return 0;}
+
+            return number;
 
         }
         else
         {
-            return Integer.parseInt(input.reverse().toString());
+            number = Integer.parseInt(input.reverse().toString());
+            if(number < -321 || number > 321){ return 0;}
+            return number;
         }
     }
 }
