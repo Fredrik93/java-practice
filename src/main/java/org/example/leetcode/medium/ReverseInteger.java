@@ -12,23 +12,37 @@ public class ReverseInteger
 {
     public int reverse(int x)
     {
+
         StringBuilder input = new StringBuilder(String.valueOf(x));
         int number = 0;
         if(input.charAt(0) == '-')
         {
             input.deleteCharAt(0);
             input.reverse();
-            number = Integer.parseInt(input.toString());
+            try
+            {
+                number = Integer.parseInt(input.toString());
+            }
+            catch(NumberFormatException nfe)
+            {
+                System.out.println("nfe" + nfe);
+            }
             number *= -1;
-            if(number < -321 || number > 321){ return 0;}
 
             return number;
 
         }
         else
         {
-            number = Integer.parseInt(input.reverse().toString());
-            if(number < -321 || number > 321){ return 0;}
+            try
+            {
+                number = Integer.parseInt(input.reverse().toString());
+            }
+            catch(NumberFormatException nfe)
+            {
+                System.out.println("nfe" + nfe);
+            }
+
             return number;
         }
     }

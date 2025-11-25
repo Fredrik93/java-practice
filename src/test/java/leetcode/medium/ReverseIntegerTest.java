@@ -39,9 +39,15 @@ public class ReverseIntegerTest
     void testOk5()
     {
         int res = ri.reverse(1534236469);
-        assertThat(res).isEqualTo(-1);
+        assertThat(res).isEqualTo(0);
     }
 
+    @Test
+    void testOk6()
+    {
+        int res = ri.reverse(8192);
+        assertThat(res).isEqualTo(2918);
+    }
 
 
 }
