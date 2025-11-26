@@ -33,4 +33,9 @@ public class MyAtoiTest
         int result = ma.myAtoi("words and 987");
         assertThat(result).isEqualTo(0);
     }
+    @Test
+    void testOk6(){
+        int result = ma.myAtoi("000987");
+        assertThat(result).isEqualTo(987);
+    }
 }

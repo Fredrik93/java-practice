@@ -17,7 +17,12 @@ public class MyAtoi
     public int myAtoi(String s)
     {
         // convert to sb
+        StringBuilder sb = new StringBuilder(s);
         // remove leqding zeros
+        while(sb.charAt(0) == '0'){
+            sb.deleteCharAt(0);
+        }
+        boolean b = true;
         // if - set boolean isNegqtive, remove the sign and continue
         // convert to int
         // for the conversion check if int is within range, if it is not then:
