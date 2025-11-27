@@ -29,6 +29,7 @@ public class MyAtoi
         // remove leqding zeros
         while(sb.charAt(0) == '0')
         {
+            // bad code here 2
             sb.deleteCharAt(0);
         }
         // if - set boolean isNegqtive, remove the sign and continue
