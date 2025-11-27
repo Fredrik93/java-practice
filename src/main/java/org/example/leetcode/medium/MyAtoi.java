@@ -21,6 +21,7 @@ public class MyAtoi
        // iterate over the string and when you hit a letter keep that substring
         // todo
 
+        // bad code here 1
         int intLimit = 2147483647;
         // convert to sb
         StringBuilder sb = new StringBuilder(s);
