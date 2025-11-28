@@ -17,10 +17,8 @@ public class MyAtoi
 {
     public int myAtoi(String s)
     {
-        //keep only numericals, stop saving numbers when reaching a letter e.g., keep 12 in 12af32
-       // iterate over the string and when you hit a letter keep that substring
-        // todo
 
+        String onlyDigitsString = null;
         int intLimit = 2147483647;
         // convert to sb
         StringBuilder sb = new StringBuilder(s);
@@ -37,8 +35,31 @@ public class MyAtoi
             sb.deleteCharAt(0);
         }
 
+        int i = 0;
+        int j = 0;
+        onlyDigitsString = sb.toString();
+        // parent loop that first iterates all chars and finds any digit
+        for(char ch : sb.toString().toCharArray())
+        {
+            i ++;
+            if(Character.isDigit(ch))
+            {
+                for(char c : sb.toString().toCharArray())
+                {
+                    j++;
+                    if(!Character.isDigit(c))
+                    {
+                        // todo is to fix this loop, it shouldnt always start from 0
+
+                        onlyDigitsString = s.substring(0, i - 1);
+                        break;
+                    }
+                }
+            }
+        }
+
         // convert to int
-        Integer num = Integer.parseInt(sb.toString());
+        Integer num = Integer.parseInt(onlyDigitsString);
         // for the conversion check if int is within range, if it is not then:
         int negIntLimit = intLimit * -1;
         if(num < negIntLimit && isNegative)
