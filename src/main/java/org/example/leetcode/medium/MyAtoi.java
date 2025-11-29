@@ -23,11 +23,7 @@ public class MyAtoi
         // convert to sb
         StringBuilder sb = new StringBuilder(s);
         boolean isNegative = false;
-        // remove leqding zeros
-        while(sb.charAt(0) == '0')
-        {
-            sb.deleteCharAt(0);
-        }
+
         // if - set boolean isNegqtive, remove the sign and continue
         if(sb.charAt(0) == '-')
         {
@@ -39,24 +35,7 @@ public class MyAtoi
         int j = 0;
         onlyDigitsString = sb.toString();
         // parent loop that first iterates all chars and finds any digit
-        for(char ch : sb.toString().toCharArray())
-        {
-            i ++;
-            if(Character.isDigit(ch))
-            {
-                for(char c : sb.toString().toCharArray())
-                {
-                    j++;
-                    if(!Character.isDigit(c))
-                    {
-                        // todo is to fix this loop, it shouldnt always start from 0
-
-                        onlyDigitsString = s.substring(0, i - 1);
-                        break;
-                    }
-                }
-            }
-        }
+        onlyDigitsString = getDigits(s, sb, i, j, onlyDigitsString);
 
         // convert to int
         Integer num = Integer.parseInt(onlyDigitsString);
@@ -72,6 +51,27 @@ public class MyAtoi
         }
 
         return isNegative ? num * -1 : num;
+    }
+
+    private static String getDigits(String s, StringBuilder sb, int i, int j, String onlyDigitsString)
+    {
+        for(char ch : sb.toString().toCharArray())
+        {
+            i++;
+            if(Character.isDigit(ch))
+            {
+                for(char c : sb.toString().toCharArray())
+                {
+                    j++;
+                    if(!Character.isDigit(c))
+                    {
+                    //todo still a bit broken for test 5
+                        return s.substring( i - 1, j -1);
+                    }
+                }
+            }
+        }
+        return onlyDigitsString;
     }
 
 }
