@@ -31,14 +31,11 @@ public class MyAtoi
             sb.deleteCharAt(0);
         }
 
-        int i = 0;
-        int j = 0;
-        onlyDigitsString = sb.toString();
-        // parent loop that first iterates all chars and finds any digit
-        onlyDigitsString = getDigits(s, sb, i, j, onlyDigitsString);
+
+        onlyDigitsString = getDigits(s);
 
         // convert to int
-        Integer num = Integer.parseInt(onlyDigitsString);
+        int num = Integer.parseInt(onlyDigitsString);
         // for the conversion check if int is within range, if it is not then:
         int negIntLimit = intLimit * -1;
         if(num < negIntLimit && isNegative)
@@ -53,25 +50,30 @@ public class MyAtoi
         return isNegative ? num * -1 : num;
     }
 
-    private static String getDigits(String s, StringBuilder sb, int i, int j, String onlyDigitsString)
+    private static String getDigits(String s)
     {
+        StringBuilder sb = new StringBuilder(s);
         for(char ch : sb.toString().toCharArray())
         {
-            i++;
+
             if(Character.isDigit(ch))
             {
-                for(char c : sb.toString().toCharArray())
+                int startIndex = sb.indexOf(String.valueOf(ch));
+                int endIndex = startIndex;
+                for(int i = startIndex; i<sb.length(); i++ )
                 {
-                    j++;
-                    if(!Character.isDigit(c))
+                    char curr = sb.charAt(i);
+                    endIndex++;
+                    if(!Character.isDigit(curr))
                     {
                     //todo still a bit broken for test 5
-                        return s.substring( i - 1, j -1);
+                        return s.substring( startIndex,endIndex);
                     }
                 }
+                return s.substring(startIndex,endIndex);
             }
         }
-        return onlyDigitsString;
+        return sb.toString();
     }
 
 }
