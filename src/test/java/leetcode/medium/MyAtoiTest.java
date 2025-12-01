@@ -38,4 +38,9 @@ public class MyAtoiTest
         int result = ma.myAtoi("000987");
         assertThat(result).isEqualTo(987);
     }
+    @Test
+    void testOk7(){
+        int result = ma.myAtoi(" -042");
+        assertThat(result).isEqualTo(-42);
+    }
 }
