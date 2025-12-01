@@ -17,7 +17,7 @@ public class MyAtoi
 {
     public int myAtoi(String s)
     {
-
+        s = s.trim();
         String onlyDigitsString = null;
         int intLimit = 2147483647;
         // convert to sb
@@ -32,9 +32,10 @@ public class MyAtoi
         }
 
 
-        onlyDigitsString = getDigits(s);
+        onlyDigitsString = getDigits(sb.toString());
 
         // convert to int
+        //todo fails here, too big
         int num = Integer.parseInt(onlyDigitsString);
         // for the conversion check if int is within range, if it is not then:
         int negIntLimit = intLimit * -1;
@@ -70,7 +71,7 @@ public class MyAtoi
                     }
                 }
                 return s.substring(startIndex,endIndex);
-            }
+            } else {return "0";}
         }
         return sb.toString();
     }

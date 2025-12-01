@@ -31,7 +31,7 @@ public class MyAtoiTest
     @Test
     void testOk5(){
         int result = ma.myAtoi("words and 987");
-        assertThat(result).isEqualTo(987);
+        assertThat(result).isEqualTo(0);
     }
     @Test
     void testOk6(){
@@ -41,6 +41,11 @@ public class MyAtoiTest
     @Test
     void testOk7(){
         int result = ma.myAtoi(" -042");
+        assertThat(result).isEqualTo(-42);
+    }
+    @Test
+    void testOk8(){
+        int result = ma.myAtoi(" 91283472332");
         assertThat(result).isEqualTo(-42);
     }
 }
