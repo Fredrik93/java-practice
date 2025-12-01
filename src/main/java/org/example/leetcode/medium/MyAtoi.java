@@ -66,8 +66,7 @@ public class MyAtoi
                     endIndex++;
                     if(!Character.isDigit(curr))
                     {
-                    //todo still a bit broken for test 5
-                        return s.substring( startIndex,endIndex);
+                        return s.substring( startIndex,endIndex-1);
                     }
                 }
                 return s.substring(startIndex,endIndex);
