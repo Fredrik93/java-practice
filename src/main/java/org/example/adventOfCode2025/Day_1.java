@@ -18,7 +18,7 @@ public class Day_1
         List<String> content = ReadInput.readData("src/main/java/org/example/adventOfCode2025/puzzle_input/Day_1.txt");
         Day_1 d = new Day_1();
         int result = d.rotate(content);
-        var bool = true;
+        System.out.println("Passcode:" + result);
 
     }
     private int rotate (List<String> content){
@@ -40,6 +40,9 @@ public class Day_1
                 // if we reach 0
                 if(current - ticks < 0){
                     ticks -= current;
+                    while(ticks > 99){
+                        ticks -= 99;
+                    }
                     current = 99 - ticks;
                 } else
                 //normal
@@ -48,10 +51,14 @@ public class Day_1
                 }
 
             } else if(direction == 'R'){
+                //todo problem when number is e.g., R777
                 // if we reach 99
                 if(current + ticks > 99){
                    int remainder = 99 - current;
                    ticks -= remainder;
+                   while(ticks > 99){
+                       ticks -= 99;
+                   }
                    current = 0;
                    current += ticks;
                    // normal
