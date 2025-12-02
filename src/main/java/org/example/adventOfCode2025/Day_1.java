@@ -51,7 +51,7 @@ public class Day_1
                 int te = current -ticks;
                 if(current - ticks < 0){
                     ticks -= current;
-                    while(ticks > 100){
+                    while(ticks > ONE_LAP){
                         ticks -= ONE_LAP;
                     }
                     current = ONE_LAP - ticks;
@@ -61,10 +61,10 @@ public class Day_1
                 }
 
             } else if(direction == 'R'){
-                if(current + ticks > 100){
-                   int remainder = 100 - current;
+                if(current + ticks > ONE_LAP){
+                   int remainder = ONE_LAP - current;
                    ticks -= remainder;
-                   while(ticks > 100){
+                   while(ticks > ONE_LAP){
                        ticks -= ONE_LAP;
                    }
                    current = 0;
@@ -72,7 +72,7 @@ public class Day_1
                 } else{
                 current += ticks;}
             }
-            if(current == 0 || current == 100){
+            if(current == 0 || current == ONE_LAP){
                 passCode++;
             }
         }
