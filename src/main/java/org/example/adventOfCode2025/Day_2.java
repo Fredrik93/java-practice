@@ -8,12 +8,22 @@ public class Day_2
 
     public static void main(String[] args) throws IOException
     {
-        long sumOfInvalidIds = 0;
         List<String> content = ReadInput.readData("src/main/java/org/example/adventOfCode2025/puzzle_input/day2.txt");
         // its just one long line
         String oneLongString = content.getFirst();
         // split by ','
         String[] ranges = oneLongString.split(",");
+
+        Day_2 d = new Day_2();
+        long sumOfInvalidIds = d.getSumOfInvalidIds(ranges);
+
+        System.out.println("Sum : " + sumOfInvalidIds);
+
+    }
+
+    private long getSumOfInvalidIds(String[] ranges)
+    {
+        long sumOfInvalidIds = 0;
 
         for(String range : ranges)
         {
@@ -36,9 +46,9 @@ public class Day_2
                     {// number shouldnt start with a zero
                         break;
                     }
-                  //  System.out.println("invalid number: " + current);
+                    //  System.out.println("invalid number: " + current);
                     sumOfInvalidIds += current;
-                   // System.out.println("Current sumOfInvalidIds is :" + sumOfInvalidIds);
+                    // System.out.println("Current sumOfInvalidIds is :" + sumOfInvalidIds);
 
                 }
 
@@ -46,9 +56,6 @@ public class Day_2
 
             }
         }
-        Day_2 d = new Day_2();
-
-        System.out.println("Sum : " + sumOfInvalidIds);
-
+        return sumOfInvalidIds;
     }
 }
