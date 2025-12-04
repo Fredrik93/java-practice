@@ -3,7 +3,7 @@ package org.example.adventOfCode2025;
 import java.io.IOException;
 import java.util.List;
 
-public class Day_2
+public class Day2
 {
 
     public static void main(String[] args) throws IOException
@@ -14,7 +14,7 @@ public class Day_2
         // split by ','
         String[] ranges = oneLongString.split(",");
 
-        Day_2 d = new Day_2();
+        Day2 d = new Day2();
         long sumOfInvalidIds = d.getSumOfInvalidIds(ranges);
 
         System.out.println("Sum : " + sumOfInvalidIds);
