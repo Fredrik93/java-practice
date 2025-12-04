@@ -8,7 +8,7 @@ public class Day_2
 
     public static void main(String[] args) throws IOException
     {
-        int sumOfInvalidIds = 0;
+        long sumOfInvalidIds = 0;
         List<String> content = ReadInput.readData("src/main/java/org/example/adventOfCode2025/puzzle_input/day2.txt");
         // its just one long line
         String oneLongString = content.getFirst();
@@ -17,10 +17,10 @@ public class Day_2
 
         for(String range : ranges)
         {
-            int startOfRange = Integer.parseInt(range.split("-")[0]);
-            int endOfRange = Integer.parseInt(range.split("-")[1]);
-            int iterations = endOfRange - startOfRange;
-            int current = startOfRange;
+            long startOfRange = Long.parseLong(range.split("-")[0]);
+            long endOfRange = Long.parseLong(range.split("-")[1]);
+            long iterations = endOfRange - startOfRange;
+            long current = startOfRange;
             for(int i = 0; i < iterations + 1; i++)
             {
                 // check each number for validity rules from the task. including start and end numbers
@@ -36,9 +36,9 @@ public class Day_2
                     {// number shouldnt start with a zero
                         break;
                     }
-                    System.out.println("invalid number: " + current);
+                  //  System.out.println("invalid number: " + current);
                     sumOfInvalidIds += current;
-                    System.out.println("Current sumOfInvalidIds is :" + sumOfInvalidIds);
+                   // System.out.println("Current sumOfInvalidIds is :" + sumOfInvalidIds);
 
                 }
 
@@ -48,7 +48,7 @@ public class Day_2
         }
         Day_2 d = new Day_2();
 
-        System.out.println("Passcode:");
+        System.out.println("Sum : " + sumOfInvalidIds);
 
     }
 }
