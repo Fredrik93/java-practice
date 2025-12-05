@@ -1,6 +1,7 @@
 package org.example.adventOfCode2025;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Day3
@@ -22,27 +23,46 @@ public class Day3
         int highestNumber = 0;
         int nextHighest = 0;
         int i = 0;
-        int [] listOfSums = new int[content.size()];
-        for(String row : content){
-            highestNumber =0;
+        int[] listOfSums = new int[content.size()];
+        int sum = 0;
+
+        for(String row : content)
+        {
+            highestNumber = 0;
             nextHighest = 0;
-            char [] arr = row.toCharArray();
-            int current=0;
-            boolean highestIsFound = false;
-            for (char c : arr){
+            char[] arr = row.toCharArray();
+            int indexOfHighest = 0;
+            int j = 0;
+            int current = 0;
+            for(char c : arr)
+            {
                 current = Character.getNumericValue(c);
                 // -1 is the starting unique value
-               if(current > highestNumber && !highestIsFound){
-                   highestNumber = current;
-                   highestIsFound = true;
-               }  else if (current > nextHighest){
-                   nextHighest = current;
-               }
+                if(current > highestNumber)
+                {
+                    highestNumber = current;
+                    indexOfHighest = j;
+                }
+                j++;
             }
-            int sum = highestNumber + nextHighest;
+            for(int k = 0; k < row.length(); k++)
+            {
+                current = Character.getNumericValue(arr[k]);
+                if(k != indexOfHighest)
+                {
+                    if(current > nextHighest)
+                    {
+                        nextHighest = current;
+                    }
+                }
+            }
+            sum = highestNumber + nextHighest;
             listOfSums[i] = sum;
-            i++;
+
         }
+
+
         return listOfSums;
+
     }
 }
