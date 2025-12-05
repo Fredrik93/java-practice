@@ -11,14 +11,38 @@ public class Day3
         List<String> content = ReadInput.readData("src/main/java/org/example/adventOfCode2025/puzzle_input/day3.txt");
 
         Day3 d = new Day3();
-        long sumOfInvalidIds = d.amethod(content);
+        int [] sumOfInvalidIds = d.findTwoLargestNumbers(content);
 
         System.out.println("result : " + sumOfInvalidIds);
 
     }
 
-    private long amethod(List<String> some)
+    private int [] findTwoLargestNumbers(List<String> content)
     {
-        return -1;
+        int highestNumber = 0;
+        int nextHighest = 0;
+        int i = 0;
+        int [] listOfSums = new int[content.size()];
+        for(String row : content){
+            highestNumber =0;
+            nextHighest = 0;
+            char [] arr = row.toCharArray();
+            int current=0;
+            boolean highestIsFound = false;
+            for (char c : arr){
+                current = Character.getNumericValue(c);
+                // -1 is the starting unique value
+               if(current > highestNumber && !highestIsFound){
+                   highestNumber = current;
+                   highestIsFound = true;
+               }  else if (current > nextHighest){
+                   nextHighest = current;
+               }
+            }
+            int sum = highestNumber + nextHighest;
+            listOfSums[i] = sum;
+            i++;
+        }
+        return listOfSums;
     }
 }
