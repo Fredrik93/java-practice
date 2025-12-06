@@ -13,7 +13,7 @@ public class Day3
 
         Day3 d = new Day3();
         int [] sumOfInvalidIds = d.findTwoLargestNumbers(content);
-
+        int sumNumbers = d.sumNumbers(sumOfInvalidIds);
         System.out.println("result : " + sumOfInvalidIds);
 
     }
@@ -22,8 +22,12 @@ public class Day3
     {
         int highestNumber = 0;
         int nextHighest = 0;
+        int indexOfHighest=0;
+        int indexOfNextHighestNumber =0;
+
         int i = 0;
         int[] listOfSums = new int[content.size()];
+        String[] listofNumbers = new String[content.size()];
         int sum = 0;
 
         for(String row : content)
@@ -31,7 +35,6 @@ public class Day3
             highestNumber = 0;
             nextHighest = 0;
             char[] arr = row.toCharArray();
-            int indexOfHighest = 0;
             int j = 0;
             int current = 0;
             for(char c : arr)
@@ -53,8 +56,21 @@ public class Day3
                     if(current > nextHighest)
                     {
                         nextHighest = current;
+                        indexOfNextHighestNumber = k;
                     }
                 }
+            }
+            if(indexOfHighest < indexOfNextHighestNumber){
+                String first = String.valueOf(highestNumber);
+                String second = String.valueOf(nextHighest);
+                listofNumbers[i] = first + second;
+                i++;
+
+            } else {
+                String first = String.valueOf(nextHighest);
+                String second = String.valueOf(highestNumber);
+                listofNumbers[i] = first + second;
+                i++;
             }
             sum = highestNumber + nextHighest;
             listOfSums[i] = sum;
@@ -64,5 +80,12 @@ public class Day3
 
         return listOfSums;
 
+    }
+    private int sumNumbers (int [] list){
+        int sum = 0;
+        for(int num : list){
+            sum += num;
+        }
+        return sum;
     }
 }
