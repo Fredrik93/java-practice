@@ -2,6 +2,7 @@ package org.example.adventOfCode2025;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Day3
@@ -12,78 +13,47 @@ public class Day3
         List<String> content = ReadInput.readData("src/main/java/org/example/adventOfCode2025/puzzle_input/day3.txt");
 
         Day3 d = new Day3();
-        int [] sumOfInvalidIds = d.findTwoLargestNumbers(content);
+        int[] sumOfInvalidIds = d.findTwoLargestNumbers(content);
         int sumNumbers = d.sumNumbers(sumOfInvalidIds);
         System.out.println("result : " + sumOfInvalidIds);
 
     }
 
-    private int [] findTwoLargestNumbers(List<String> content)
+    private int[] findTwoLargestNumbers(List<String> content)
     {
-        int highestNumber = 0;
-        int nextHighest = 0;
-        int indexOfHighest=0;
-        int indexOfNextHighestNumber =0;
-
-        int i = 0;
-        int[] listOfSums = new int[content.size()];
-        String[] listofNumbers = new String[content.size()];
-        int sum = 0;
-
-        for(String row : content)
+        int[] result = new int[content.size()];
+        for(String item : content)
         {
-            highestNumber = 0;
-            nextHighest = 0;
-            char[] arr = row.toCharArray();
+            List<Integer> list = new ArrayList<>();
             int j = 0;
-            int current = 0;
+            char[] arr = item.toCharArray();
             for(char c : arr)
             {
-                current = Character.getNumericValue(c);
-                // -1 is the starting unique value
-                if(current > highestNumber)
-                {
-                    highestNumber = current;
-                    indexOfHighest = j;
-                }
-                j++;
+                list.add(Character.getNumericValue(c));
             }
-            for(int k = 0; k < row.length(); k++)
-            {
-                current = Character.getNumericValue(arr[k]);
-                if(k != indexOfHighest)
-                {
-                    if(current > nextHighest)
-                    {
-                        nextHighest = current;
-                        indexOfNextHighestNumber = k;
-                    }
-                }
-            }
-            if(indexOfHighest < indexOfNextHighestNumber){
-                String first = String.valueOf(highestNumber);
-                String second = String.valueOf(nextHighest);
-                listofNumbers[i] = first + second;
-                i++;
+            StringBuilder sb = new StringBuilder();
 
-            } else {
-                String first = String.valueOf(nextHighest);
-                String second = String.valueOf(highestNumber);
-                listofNumbers[i] = first + second;
-                i++;
-            }
-            sum = highestNumber + nextHighest;
-            listOfSums[i] = sum;
+            int firstDigit = Collections.max(list);
+            list.remove(Integer.valueOf(firstDigit));
+            int secondDigit = Collections.max(list);
+            sb.append(firstDigit);
+            sb.append(secondDigit);
+                int sum = Integer.parseInt(sb.toString());
+
+                result[j] = sum;
+                sb = new StringBuilder();
+                j++;
 
         }
 
-
-        return listOfSums;
-
+        return new int[] { -23 };
     }
-    private int sumNumbers (int [] list){
+
+    private int sumNumbers(int[] list)
+    {
         int sum = 0;
-        for(int num : list){
+        for(int num : list)
+        {
             sum += num;
         }
         return sum;
