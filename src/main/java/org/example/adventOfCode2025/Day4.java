@@ -40,19 +40,52 @@ public class Day4
             char[] currentRow = content.get(i).toCharArray();
             char[] nextRow = content.get(i + 1).toCharArray();
             // check if the current prev and next are @ symbols
-            for(int j = 0; j < currentRow.length; j++)
+            for(int j = 0; j < currentRow.length - 1; j++)
             {
                 char currentElement = currentRow[j];
-                if(currentRow[i - 1] == '@' || currentRow[i + 1] == '@')
-                {
-                    adjacentSymbols++;
-                }
 
+                //if the current element is not a roll theres no point in checking anything.. in life
+                if(currentElement == '@')
+                {
+
+                    adjacentSymbols = 0;
+                    char previousElement = ' ';
+                    if(j > 0)
+                    {
+                        previousElement = currentRow[j - 1];
+                    }
+
+                    char nextElement = currentRow[j + 1];
+                    // check prev row here
+                    // check current element adjacent rows
+                    adjacentSymbols += currentRowNumberOfAdjacentSymbols(j, previousElement, nextElement);
+                    // check next row here
+
+                    if(adjacentSymbols < 4)
+                    {
+                        // it is a good rollie roll so count it
+                    }
+                }
             }
 
         }
 
         return -1;
+    }
+
+    private int currentRowNumberOfAdjacentSymbols(int j, char previousElement, char nextElement)
+    {
+        int adjacentSymbols = 0;
+        if(j > 0 && previousElement == '@')
+        {
+            adjacentSymbols++;
+        }
+
+        if(nextElement == '@')
+        {
+            adjacentSymbols++;
+        }
+        return adjacentSymbols;
     }
 
 }
