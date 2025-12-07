@@ -15,38 +15,49 @@ public class Day3
         Day3 d = new Day3();
         int[] sumOfInvalidIds = d.findTwoLargestNumbers(content);
         int sumNumbers = d.sumNumbers(sumOfInvalidIds);
-        System.out.println("result : " + sumOfInvalidIds);
+        System.out.println("result : " + sumNumbers);
 
     }
 
     private int[] findTwoLargestNumbers(List<String> content)
     {
         int[] result = new int[content.size()];
+        int resIndex =0;
+
         for(String item : content)
         {
-            List<Integer> list = new ArrayList<>();
-            int j = 0;
-            char[] arr = item.toCharArray();
-            for(char c : arr)
+            // in order, find the highest combination of two digits
+            // 6791829
+            // loop over item
+            // keep current digit
+            // loop over all digits coming after that
+            // keep track of highest number
+            int highest = 0;
+            for(int i = 0; i < item.length(); i++)
             {
-                list.add(Character.getNumericValue(c));
+                int highestCombination = 0;
+                String firstDigit = String.valueOf(item.charAt(i));
+                if(i == item.length()-1){highestCombination = Integer.parseInt(firstDigit); break;}
+                int secondHighest = 0;
+                for(int j = i + 1; j < item.length(); j++)
+                {
+                    int secondInt = Character.getNumericValue(item.charAt(j));
+                    if(secondInt > secondHighest)
+                    {
+                        secondHighest = secondInt;
+                    }
+                }
+                String res = firstDigit + secondHighest;
+                int current = Integer.parseInt(res);
+                if(current > highest)
+                {
+                    highest = current;
+                }
             }
-            StringBuilder sb = new StringBuilder();
+            result[resIndex] = highest;
+            resIndex++;}
 
-            int firstDigit = Collections.max(list);
-            list.remove(Integer.valueOf(firstDigit));
-            int secondDigit = Collections.max(list);
-            sb.append(firstDigit);
-            sb.append(secondDigit);
-                int sum = Integer.parseInt(sb.toString());
-
-                result[j] = sum;
-                sb = new StringBuilder();
-                j++;
-
-        }
-
-        return new int[] { -23 };
+        return result;
     }
 
     private int sumNumbers(int[] list)
