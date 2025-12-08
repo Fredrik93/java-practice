@@ -30,62 +30,76 @@ public class Day4
          * if touchingSymbols are less than 4 then its a good roll so inkrement some counter
 
          */
-        int adjacentSymbols = 0;
-        for(int i = 0; i < content.size(); i++)
+        int rolls = 0;
+        for(int i = 0; i < content.size()-1; i++)
         {
+            int adjacentSymbols = 0;
+
+            char[] previousRow = new char[content.size()];
             if(i > 0)
             {
-                char[] previousRow = content.get(i - 1).toCharArray();
+                previousRow = content.get(i - 1).toCharArray();
             }
             char[] currentRow = content.get(i).toCharArray();
             char[] nextRow = content.get(i + 1).toCharArray();
             // check if the current prev and next are @ symbols
-            for(int j = 0; j < currentRow.length - 1; j++)
+            for(int j = 0; j < currentRow.length; j++)
             {
                 char currentElement = currentRow[j];
 
                 //if the current element is not a roll theres no point in checking anything.. in life
-                if(currentElement == '@')
+               if(currentElement == '@')
                 {
-
                     adjacentSymbols = 0;
-                    char previousElement = ' ';
-                    if(j > 0)
-                    {
-                        previousElement = currentRow[j - 1];
-                    }
-
-                    char nextElement = currentRow[j + 1];
                     // check prev row here
+                    adjacentSymbols += rowNumberOfAdjacentSymbols(previousRow, j, false);
                     // check current element adjacent rows
-                    adjacentSymbols += currentRowNumberOfAdjacentSymbols(j, previousElement, nextElement);
+                    adjacentSymbols += rowNumberOfAdjacentSymbols(currentRow, j,true);
                     // check next row here
+                    adjacentSymbols += rowNumberOfAdjacentSymbols(nextRow, j, false);
+
 
                     if(adjacentSymbols < 4)
                     {
                         // it is a good rollie roll so count it
+                        rolls++;
                     }
                 }
             }
 
         }
 
-        return -1;
+        return rolls;
     }
 
-    private int currentRowNumberOfAdjacentSymbols(int j, char previousElement, char nextElement)
+
+    private int rowNumberOfAdjacentSymbols(char[] row, int currentIndex, boolean isCurrentRow)
     {
         int adjacentSymbols = 0;
-        if(j > 0 && previousElement == '@')
-        {
-            adjacentSymbols++;
-        }
+        char prevSymbol = 0;
+        char currentSymbol = row[currentIndex];
+        char nextSymbol = 0;
+        if(currentIndex < row.length-1)
+        nextSymbol = row[currentIndex + 1];
 
-        if(nextElement == '@')
+        if(currentIndex > 0)
+        {
+            prevSymbol = row[currentIndex - 1];
+            if(prevSymbol == '@')
+            {
+                adjacentSymbols++;
+            }
+        }
+        // we should check previous and next row for the current symbol, but not the current row
+        if(!isCurrentRow && currentSymbol == '@'){
+           adjacentSymbols++;
+        }
+        if(nextSymbol == '@')
         {
             adjacentSymbols++;
         }
         return adjacentSymbols;
+
     }
 
 }
