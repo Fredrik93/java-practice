@@ -31,7 +31,7 @@ public class Day4
 
          */
         int rolls = 0;
-        for(int i = 0; i < content.size()-1; i++)
+        for(int i = 0; i < content.size(); i++)
         {
             int adjacentSymbols = 0;
 
@@ -41,23 +41,26 @@ public class Day4
                 previousRow = content.get(i - 1).toCharArray();
             }
             char[] currentRow = content.get(i).toCharArray();
-            char[] nextRow = content.get(i + 1).toCharArray();
+            char[] nextRow = new char[content.size()];
+            if(i < content.size() - 1)
+            {
+                nextRow = content.get(i + 1).toCharArray();
+            }
             // check if the current prev and next are @ symbols
             for(int j = 0; j < currentRow.length; j++)
             {
                 char currentElement = currentRow[j];
 
                 //if the current element is not a roll theres no point in checking anything.. in life
-               if(currentElement == '@')
+                if(currentElement == '@')
                 {
                     adjacentSymbols = 0;
                     // check prev row here
                     adjacentSymbols += rowNumberOfAdjacentSymbols(previousRow, j, false);
                     // check current element adjacent rows
-                    adjacentSymbols += rowNumberOfAdjacentSymbols(currentRow, j,true);
+                    adjacentSymbols += rowNumberOfAdjacentSymbols(currentRow, j, true);
                     // check next row here
                     adjacentSymbols += rowNumberOfAdjacentSymbols(nextRow, j, false);
-
 
                     if(adjacentSymbols < 4)
                     {
@@ -72,15 +75,14 @@ public class Day4
         return rolls;
     }
 
-
     private int rowNumberOfAdjacentSymbols(char[] row, int currentIndex, boolean isCurrentRow)
     {
         int adjacentSymbols = 0;
         char prevSymbol = 0;
         char currentSymbol = row[currentIndex];
         char nextSymbol = 0;
-        if(currentIndex < row.length-1)
-        nextSymbol = row[currentIndex + 1];
+        if(currentIndex < row.length - 1)
+            nextSymbol = row[currentIndex + 1];
 
         if(currentIndex > 0)
         {
@@ -91,8 +93,9 @@ public class Day4
             }
         }
         // we should check previous and next row for the current symbol, but not the current row
-        if(!isCurrentRow && currentSymbol == '@'){
-           adjacentSymbols++;
+        if(!isCurrentRow && currentSymbol == '@')
+        {
+            adjacentSymbols++;
         }
         if(nextSymbol == '@')
         {
