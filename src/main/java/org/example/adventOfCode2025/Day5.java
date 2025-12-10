@@ -30,7 +30,7 @@ public class Day5
         // for each ingredientid, check if it exists in map
 
         // if it exists, inkrement counter
-        //return counter
+        //return counter var
 
 
         return -1;
