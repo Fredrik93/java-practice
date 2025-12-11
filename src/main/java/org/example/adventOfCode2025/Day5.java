@@ -1,9 +1,8 @@
 package org.example.adventOfCode2025;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.net.Inet4Address;
+import java.util.*;
 
 public class Day5
 {
@@ -21,7 +20,7 @@ public class Day5
     private int getFreshIngredients(List<String> content)
     {
         // get all allowed ids
-        int[] allowedIds = getAllowedIds(content);
+        Set <Integer> allowedIds = getAllowedIds(content);
         //get ingredients thqt we want to check
         int [] ingredientsToCheck = getIngredientsToCheck(content);
         // save each allowed id into a map
@@ -35,14 +34,27 @@ public class Day5
 
         return -1;
     }
-    private int [] getAllowedIds(List<String> content){
-        return new int[]{};
+    private Set<Integer> getAllowedIds(List<String> content){
+        Set <Integer> allowedIds = new HashSet<>();
+        for(String s : content)
+        {
+            if(s.isEmpty()) { return allowedIds;}
+                int firstNumber = Integer.parseInt(s.split("-")[0]);
+                int secondNumber = Integer.parseInt(s.split("-")[1]);
+                for(int j = firstNumber; j < secondNumber + 1; j++)
+                {
+                    allowedIds.add(j);
+                }
+
+
+        }
+        return allowedIds;
     }
     private int [] getIngredientsToCheck(List<String> content){
         return new int[]{};
     }
 
-    private Map saveAllowedIds(int [] array){
+    private Map saveAllowedIds(Set <Integer> setOfIds){
         return new HashMap<Integer, Integer>(){};
     }
 
