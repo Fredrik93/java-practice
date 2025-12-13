@@ -1,7 +1,7 @@
 package org.example.adventOfCode2025;
 
 import java.io.IOException;
-import java.net.Inet4Address;
+import java.math.BigInteger;
 import java.util.*;
 
 public class Day5
@@ -11,41 +11,44 @@ public class Day5
     {
         List<String> content = ReadInput.readData("src/main/java/org/example/adventOfCode2025/puzzle_input/day5.txt");
         Day5 d = new Day5();
-        int result = d.getFreshIngredients(content);
+        long result = d.getFreshIngredients(content);
         // method to return all adjacent rolls, 2d arr
         System.out.println("result : " + result);
 
     }
 
-    private int getFreshIngredients(List<String> content)
+    private long getFreshIngredients(List<String> content)
     {
-        // get all allowed ids
-        Set<Integer> allowedIds = getAllowedIds(content);
-        //get ingredients thqt we want to check
-        int[] ingredientsToCheck = getIngredientsToCheck(content);
-        // save each allowed id into a map
-        Map mapOfAllowedIds = saveAllowedIds(allowedIds);
-
-        // for each ingredientid, check if it exists in map
-
-        // if it exists, inkrement counter
-        //return counter var
-
-        return -1;
+        Set<Long> allowedIds = getAllowedIds(content);
+        long[] ingredientsToCheck = getIngredientsToCheck(content);
+        return countAllowedIDs(allowedIds, ingredientsToCheck);
     }
+    private List<Range> getAllowedRanges(List<String> content) {
+        List<Range> ranges = new ArrayList<>();
+        for (String s : content) {
+            if (s.isEmpty()) break;
+            String[] parts = s.split("-");
+            ranges.add(new Range(
+                    Long.parseLong(parts[0]),
+                    Long.parseLong(parts[1])
+            ));
+        }
+        return ranges;
+    }
+    record Range(long start, long end) {}
 
-    private Set<Integer> getAllowedIds(List<String> content)
+    private Set<Long> getAllowedIds(List<String> content)
     {
-        Set<Integer> allowedIds = new HashSet<>();
+        Set<Long> allowedIds = new HashSet<>();
         for(String s : content)
         {
             if(s.isEmpty())
             {
                 return allowedIds;
             }
-            int firstNumber = Integer.parseInt(s.split("-")[0]);
-            int secondNumber = Integer.parseInt(s.split("-")[1]);
-            for(int j = firstNumber; j < secondNumber + 1; j++)
+            long firstNumber = Long.parseLong(s.split("-")[0]);
+            long secondNumber = Long.parseLong(s.split("-")[1]);
+            for(long j = firstNumber; j < secondNumber + 1; j++)
             {
                 allowedIds.add(j);
             }
@@ -54,10 +57,10 @@ public class Day5
         return allowedIds;
     }
 
-    private int[] getIngredientsToCheck(List<String> content)
+    private long[] getIngredientsToCheck(List<String> content)
     {
         int startOfList = 0;
-        int[] ingredients;
+        long[] ingredients;
         // Figure out how many strings of the list we want
         for(String c : content)
         {
@@ -68,7 +71,7 @@ public class Day5
                 startOfList = content.indexOf(c + 1);
             }
         }
-        ingredients = new int[content.size() - startOfList];
+        ingredients = new long[content.size() - startOfList];
         int j = 0;
         for(int i = startOfList; i < content.size(); i++)
         {
@@ -80,11 +83,17 @@ public class Day5
         return ingredients;
     }
 
-    private Map saveAllowedIds(Set<Integer> setOfIds)
+    private int countAllowedIDs(Set<Long> allowedIds, long [] ingredientsToCheck)
     {
-        return new HashMap<Integer, Integer>()
+        int approvedIngredientIDs = 0;
+        for(int i = 0; i < ingredientsToCheck.length; i++)
         {
-        };
+            long currentIngredientId = ingredientsToCheck[i];
+            if(allowedIds.contains(currentIngredientId)){
+                approvedIngredientIDs++;
+            }
+        }
+        return approvedIngredientIDs;
     }
 
 }
