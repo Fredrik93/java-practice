@@ -54,33 +54,11 @@ public class Day5
     }
 
     record Range(long start, long end)
-    {
-    }
-
-    private Set<Long> getAllowedIds(List<String> content)
-    {
-        Set<Long> allowedIds = new HashSet<>();
-        for(String s : content)
-        {
-            if(s.isEmpty())
-            {
-                return allowedIds;
-            }
-            long firstNumber = Long.parseLong(s.split("-")[0]);
-            long secondNumber = Long.parseLong(s.split("-")[1]);
-            for(long j = firstNumber; j < secondNumber + 1; j++)
-            {
-                allowedIds.add(j);
-            }
-
-        }
-        return allowedIds;
-    }
+    {}
 
     private long[] getIngredientsToCheck(List<String> content)
     {
         long[] ingredients;
-        // Figure out how many strings of the list we want
         int startIndexOfIngredientsToCheck = findStartOfIngredientsToCheck(content) +1;
         ingredients = new long[content.size() - startIndexOfIngredientsToCheck];
         int j = 0;
