@@ -43,7 +43,12 @@ public class LeftRightSumDifferences
             sum = 0;
         }
         // now sum the values in i in both arrays and use only the absolute values
-
-        return leftArr;
+        int [] result = new int[arr.length];
+        for(int i = 0; i < arr.length; i++)
+        {
+            int res = Math.abs(leftArr[i]-rightArr[i]);
+            result[i] = res;
+        }
+        return result;
     }
 }
