@@ -14,4 +14,11 @@ public class LargestLocalMatrixTest
         int [][] res = llm.largestLocal(new int[][]{{9,9,8,1},{5,6,2,6},{8,2,6,4},{6,2,2,2}});
         assertThat(res).isEqualTo(new int[][]{{9,9}, {8,6}});
     }
+    @Test
+    void testOk1(){
+        int [][] res = llm.largestLocal(new int[][]{{1,1,1,1,1},{1,1,1,1,1},{1,1,2,1,1},{1,1,1,1,1},{1,1,1,1,1}});
+        assertThat(res).isEqualTo(new int[][]{{2,2,2},{2,2,2},{2,2,2}});
+    }
+
+
 }
