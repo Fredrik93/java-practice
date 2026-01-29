@@ -29,7 +29,7 @@ public class LargestLocalMatrix
                 // check upper row
                 highestNumberCloseToTheMiddle = Math.max(grid[i][j], highestNumberCloseToTheMiddle);
                 highestNumberCloseToTheMiddle = Math.max(grid[i][j+1], highestNumberCloseToTheMiddle);
-                highestNumberCloseToTheMiddle = Math.max(grid[i][j+2], highestNumberCloseToTheMiddle);
+                highestNumberCloseToTheMiddle = Math.max(grid[i][j + 2], highestNumberCloseToTheMiddle);
 
                 // check mid row
                 highestNumberCloseToTheMiddle = Math.max(grid[i+1][j], highestNumberCloseToTheMiddle);
@@ -52,9 +52,5 @@ public class LargestLocalMatrix
         return highestNumbersInMatrix;
     }
 
-    private void findHighestNumberInSurroundingElements(int middleElement)
-    {
-
-    }
 
 }

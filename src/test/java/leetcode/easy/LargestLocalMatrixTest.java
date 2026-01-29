@@ -20,5 +20,10 @@ public class LargestLocalMatrixTest
         assertThat(res).isEqualTo(new int[][]{{2,2,2},{2,2,2},{2,2,2}});
     }
 
+    @Test
+    void testOk2(){
+        int [][] res = llm.largestLocal(new int[][]{{2,5,5},{3,2,5},{1,2,3}});
+        assertThat(res).isEqualTo(new int[][]{{-2,-2,-2}});
+    }
 
 }
