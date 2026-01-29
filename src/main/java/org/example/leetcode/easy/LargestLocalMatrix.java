@@ -12,15 +12,16 @@ public class LargestLocalMatrix
         // check all elements that are at most i+1 or j + 1 steps away, that way you check the closest neighbours
         int lengthToIterate = grid[0].length * 2;
         // for test 1 should be four elemented 6,2,2,6 (the middlemost elements)
-        int[] allMddleElementsInMatrix = new int[4];
-        int [] highestNumbersInMatrix = new int[grid.length];
+        int gridLength = (int) Math.ceil(grid.length / 2.0);
+
+        int [][] highestNumbersInMatrix = new int[gridLength][gridLength];
 
         int k = 0;
         // gte a list of middleelements. not sure if i need this but i could verify that im getting the mid elements i need at least
-        for(int i = 0; i < grid.length/2; i++)
+        for(int i = 0; i < gridLength; i++)
         {
 
-            for(int j = 0; j < grid.length/2; j++)
+            for(int j = 0; j < gridLength; j++)
             {
                 int highestNumberCloseToTheMiddle =0;
 
@@ -41,14 +42,14 @@ public class LargestLocalMatrix
                 highestNumberCloseToTheMiddle = Math.max(grid[i+2][j+2], highestNumberCloseToTheMiddle);
 
                 // add highest num to the list
-                highestNumbersInMatrix[k] = highestNumberCloseToTheMiddle;
+                highestNumbersInMatrix[i][j] = highestNumberCloseToTheMiddle;
                 k++;
 
 
             }
         }
 
-        return grid;
+        return highestNumbersInMatrix;
     }
 
     private void findHighestNumberInSurroundingElements(int middleElement)
