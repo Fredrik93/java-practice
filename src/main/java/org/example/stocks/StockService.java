@@ -29,6 +29,12 @@ public class StockService {
         }
         return stock;
     }
+    public StockModel getNullPointer(StockModel stock){
+        return null;
+    }
+    public void fillHistory(){
+        throw new ArithmeticException();
+    }
 
     private StockModel getStockFromDb(MonitorInfo info) {
         info.setOtherDuration(12345);
