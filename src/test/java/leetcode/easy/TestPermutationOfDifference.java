@@ -9,7 +9,13 @@ public class TestPermutationOfDifference {
     private PermutationOfDifference pd = new PermutationOfDifference();
     @Test
     void testOk(){
-        int res = pd.findPermutationDifference("bla", "bla");
-        assertThat(res).isEqualTo(-1);
+        int res = pd.findPermutationDifference("abc", "bac");
+        assertThat(res).isEqualTo(2);
+    }
+
+    @Test
+    void testOk1(){
+        int res = pd.findPermutationDifference("abcde", "edbac");
+        assertThat(res).isEqualTo(12);
     }
 }
