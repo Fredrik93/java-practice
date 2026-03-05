@@ -1,41 +1,23 @@
 package org.example.leetcode.easy;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class SumBST {
     public int rangeSumBST(TreeNode root, int low, int high) {
-        // iterate the tree
-        int sum = levelOrder(root, low, high);
-
-        // if between low or high add to sum
-        // return
-        return sum;
+        List<Integer> listOfValues = getValues(root);
+        return listOfValues.stream()
+                .filter(number -> number >= low && number <= high)
+                .mapToInt(Integer::intValue)
+                .sum();
     }
 
-    // Breadth first search
-    public int levelOrder(TreeNode root, int low, int high) {
-        if (root == null) return -1;
-        Queue<TreeNode> queue = new LinkedList<>();
-        queue.add(root);
-        int sum = 0;
-        while (!queue.isEmpty()) {
-            TreeNode current = queue.poll();
-            int currVal = current.val;
-
-            if (currVal >= low && currVal <= high) {
-                sum += currVal;
-            }
-            if (current.left != null) {
-                queue.add(current.left);
-            }
-
-            if (current.right != null) {
-                queue.add(current.right);
-            }
-
-        }
-        return sum;
+    public List<Integer> getValues(TreeNode root) {
+        if (root == null) return Collections.emptyList();
+        List<Integer> list = new ArrayList<>();
+        list.add(root.val);
+        list.addAll(getValues(root.left));
+        list.addAll(getValues(root.right));
+        return list;
     }
-
 }
