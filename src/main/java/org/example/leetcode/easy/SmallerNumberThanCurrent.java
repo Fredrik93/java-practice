@@ -6,6 +6,13 @@ package org.example.leetcode.easy;
  * <p>
  * Return the answer in an array.
  */
+// solve using functional programming
+
+/**
+ * current with for loop:
+ * runtime 10ms, Beats 17.62%
+ * memory: 45.47 MB Beats 83.96%
+ */
 public class SmallerNumberThanCurrent {
     public int[] smallerNumbersThanCurrent(int[] nums) {
         int [] numberOfOccurencesPerNumber = new int[nums.length];
