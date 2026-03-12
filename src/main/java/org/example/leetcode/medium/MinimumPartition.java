@@ -11,7 +11,7 @@ public class MinimumPartition {
 
             currentDeciBinary = getCurrentDeciBinary(numOfDigits);
             // currentDeciBin: substract the deci bin num that is numOfDigits long eg 11 or 111
-            if(number > currentDeciBinary){
+            if(number >= currentDeciBinary){
                 number -= currentDeciBinary;
                 operations++;
             }
