@@ -32,10 +32,14 @@ public class MinimumPartitionTest {
         int res = mp.minPartitions("333");
         assertThat(res).isEqualTo(3);
     }
-    // should fail it is not fully written
     @Test
     void testOk4(){
-        int res = mp.minPartitions("3323");
-        assertThat(res).isEqualTo(30);
+        int res = mp.minPartitions("6");
+        assertThat(res).isEqualTo(6);
+    }
+    @Test
+    void testOk5(){
+        int res = mp.minPartitions("23");
+        assertThat(res).isEqualTo(2);
     }
 }
