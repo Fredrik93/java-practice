@@ -8,16 +8,18 @@ public class SplitBalancedString {
         // loop
         // if next is the same as curr R == R then just continue
         // if curr == R and next == L then you have a subpar, count that
-        char [] arr = s.toCharArray();
-        int amountOfBalancedSubStrings = 0;
-        for (int i = 0; i < arr.length-1; i++) {
-            char curr = arr[i];
-            char next = arr[+1];
-            // check for smallest substring LR RL
-            if(curr == 'R' && next == 'L'){ amountOfBalancedSubStrings++;} else if(curr == 'L' && next == 'R'){amountOfBalancedSubStrings++;}
-            // probably need to use substrings
+        int balanceSum = 0;
+        int result = 0;
+        for (int i = 0; i < s.length()-1; i++) {
+            char balance = s.charAt(i);
 
+            if(balance == 'L'){balanceSum++;} else {
+                if(balanceSum > 0){
+                balanceSum--;}}
+            if(balanceSum == 0){
+                result++;
+            }
         }
-    return amountOfBalancedSubStrings;
+    return result;
     }
 }

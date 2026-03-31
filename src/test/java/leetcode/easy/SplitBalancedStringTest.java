@@ -31,4 +31,9 @@ public class SplitBalancedStringTest {
         int res = splitBalancedString.balancedStringSplit("RLRLRL");
         assertThat(res).isEqualTo(3);
     }
+    @Test
+    void testOk4() {
+        int res = splitBalancedString.balancedStringSplit("ABCDEF");
+        assertThat(res).isEqualTo(0);
+    }
 }
