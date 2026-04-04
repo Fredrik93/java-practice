@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class MinNumberMovesToSeat {
-    private final int RANDOM_HIGH_NUMBER = 1000000000;
+    private final int RANDOM_HIGH_NUMBER = 100000000;
     public int minMovesToSeat(int[] seats, int[] students) {
         List<Integer> seatsList = new ArrayList<>();
 
