@@ -1,35 +1,35 @@
 package org.example.leetcode.easy;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 public class MinNumberMovesToSeat {
-    private final int RANDOM_HIGH_NUMBER = 100000000;
     public int minMovesToSeat(int[] seats, int[] students) {
-        List<Integer> seatsList = new ArrayList<>();
 
-        // turn seats into arraylst. remove the seat when its been assigned.
-        Arrays.stream(seats).forEach(seatsList::add);
+        int sumOfSteps = 0;
+        // for each student, go over the seats and find the smallest diff
 
-        int stepsForAStudentToASeat = RANDOM_HIGH_NUMBER;
-        int result = 0;
-        // loop over students
         for (int i = 0; i < students.length; i++) {
-            int currentStudent = students[i];
+            int shortestPathToASeat = Integer.MAX_VALUE;
+            for (int j = 0; j < seats.length; j++) {
+                int student = students[i];
 
-            for (Integer seat : seatsList) {
-                int currentAmountOfSteps = 0;
-                currentAmountOfSteps = currentStudent > seat ? currentStudent - seat: seat - currentStudent;
-                if(currentAmountOfSteps < stepsForAStudentToASeat){
-                    stepsForAStudentToASeat = currentAmountOfSteps;
+                if(seats[j] != -1){
+                int seat = seats[j];
+
+                int currentStepsNeededToSeatStudent = Math.abs(student - seat);
+                if(currentStepsNeededToSeatStudent < shortestPathToASeat){
+                    shortestPathToASeat = currentStepsNeededToSeatStudent;
+                    // block the seat for other students
+                    seats[j] = -1;
                 }
             }
-            // todo should remove the seat from the list when it is occupied
-            result += stepsForAStudentToASeat;
+
+            }
+
+            sumOfSteps += shortestPathToASeat;
         }
-        // for the ith student, check how far he is from each of the seats, both ways ie a student i=2 could have a seat at both 1 or 5. but 1 is closer so choose that
-        // save the number that it takes for the student to get to the seat, sum up all these
-        return result;
+        // remove that seat or block it after a student is seated
+        // sum up the smallest diffs and return
+
+
+        return sumOfSteps;
     }
 }
