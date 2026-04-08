@@ -1,12 +1,18 @@
 package org.example.leetcode.easy;
 
-import java.util.ArrayList;
-import java.util.List;
+
+import java.util.Arrays;
 
 public class MinNumberMovesToSeat {
     public int minMovesToSeat(int[] seats, int[] students) {
         //sort arrays
+        Arrays.sort(seats);
+        Arrays.sort(students);
+        int sum = 0;
         // greedily match smallest seat with smallest student and sum
-        return -1;
+        for (int i = 0; i < students.length; i++) {
+            sum += Math.abs(students[i] - seats[i]);
+        }
+        return sum;
     }
 }
