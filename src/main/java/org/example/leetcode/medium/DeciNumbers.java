@@ -26,8 +26,14 @@ public class DeciNumbers {
             sb.append(1);
         }
         // if it is too large then reduce the last 1 to a 0
-        if (Integer.parseInt(sb.toString()) > Integer.parseInt(n)) {
+        int i = 0;
+        if (Integer.parseInt(sb.toString()) < Integer.parseInt(n)) {
+
+            while(n.charAt(i)- '0' != 0){
             sb.deleteCharAt(n.length()-1);
+            sb.append(1);
+            i++;
+        }
         }
 
 
