@@ -1,33 +1,30 @@
 package org.example.leetcode.easy;
 
+import java.util.Objects;
+
 public class MergeNodeLists {
-    public ListNode mergeNodes(ListNode head1, ListNode head2) {
+    public ListNode mergeNodes(ListNode l1, ListNode l2) {
         // loop over nodes
-        ListNode currentFirstList = head1;
-        ListNode currentSecondList = head2;
-        ListNode resultNodes = null;
-        while (currentFirstList != null && currentSecondList != null) {
-            System.out.println(currentFirstList.val);
-            System.out.println(currentSecondList.val);
-            if (resultNodes == null) {
-                resultNodes = new ListNode(currentFirstList.val);
-                resultNodes.next = new ListNode(currentSecondList.val);
-                currentFirstList = currentFirstList.next;
-                currentSecondList = currentSecondList.next;
 
+        ListNode dummy = new ListNode(0);
+        ListNode current = dummy;
+        while (l1 != null && l2 != null) {
+            if (l1.val <= l2.val) {
+                current.next = l1;
+                l1 = l1.next;
             } else {
-                resultNodes = new ListNode(currentFirstList.val);
-                resultNodes.next = new ListNode(currentSecondList.val);
-                currentFirstList = currentFirstList.next;
-                currentSecondList = currentSecondList.next;
-
+                current.next = l2;
+                l2 = l2.next;
             }
-
+            current = current.next;
         }
-        // store results in new node
-        // return node
+        if(l1 != null){
+            current.next = l1;
 
-        return null;
+        } else{
+            current.next = l2;
+        }
+        return dummy.next;
     }
 
     public static class ListNode {
@@ -44,6 +41,18 @@ public class MergeNodeLists {
         public ListNode(int val, ListNode next) {
             this.val = val;
             this.next = next;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (o == null || getClass() != o.getClass()) return false;
+            ListNode listNode = (ListNode) o;
+            return val == listNode.val && Objects.equals(next, listNode.next);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(val, next);
         }
     }
 }
