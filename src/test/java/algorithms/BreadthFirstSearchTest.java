@@ -2,14 +2,12 @@ package algorithms;
 
 import org.example.algorithms.BreadthFirstSearch;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class BreadthFirstSearchTest {
-    private BreadthFirstSearch breadthFirstSearch = new BreadthFirstSearch();
+class BreadthFirstSearchTest {
+    private final BreadthFirstSearch breadthFirstSearch = new BreadthFirstSearch();
 
     @Test
     void testOk() {

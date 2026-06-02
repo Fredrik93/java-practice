@@ -24,8 +24,8 @@ public class BreadthFirstSearch {
                 for(Node n: currentNode.neighbors){
                     queue.add(n);
                 }
+                visited.add(currentNode);
             }
-            visited.add(currentNode);
 
 
         }
