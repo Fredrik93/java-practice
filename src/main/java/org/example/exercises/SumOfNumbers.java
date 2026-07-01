@@ -22,9 +22,11 @@ public class SumOfNumbers {
         double avg = people.stream().mapToDouble(Person::age).average().orElse(0.00);
         return Math.round(avg * 100.0) / 100.0;
     }
-public record Person(String name, int age) {}
+public record Person(String name, int age) {
+}
 
     public List<String> sortNames(List<String> names){
+
        return names.stream().filter(n -> Character.isUpperCase(n.charAt(0))).sorted().toList();
     }
 }

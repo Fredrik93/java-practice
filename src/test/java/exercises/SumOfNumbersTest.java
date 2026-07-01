@@ -50,4 +50,9 @@ public class SumOfNumbersTest {
         List<String> res = sn.sortNames(List.of("Fred", "Anne", "Liz", "beth"));
         assertThat(res).isEqualTo(List.of("Anne", "Fred", "Liz"));
     }
+    @Test
+    void createPerson (){
+        SumOfNumbers.Person p = new SumOfNumbers.Person("Linn", 35);
+
+    }
 }
