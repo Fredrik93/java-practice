@@ -1,9 +1,8 @@
 package org.example.exercises;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.OptionalDouble;
 import java.util.stream.Collectors;
 
 public class SumOfNumbers {
@@ -26,7 +25,7 @@ public class SumOfNumbers {
 public record Person(String name, int age) {}
 
     public List<String> sortNames(List<String> names){
-        return List.of("none");
+       return names.stream().filter(n -> Character.isUpperCase(n.charAt(0))).sorted().toList();
     }
 }
 
